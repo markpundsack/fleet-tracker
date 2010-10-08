@@ -1,0 +1,22 @@
+%table.fleets
+  - @fleets.each do |fleet|
+    %tr[fleet]
+      - pilot_count = fleet.users.count
+      %td= fleet.title
+      %td= link_to 'View', fleet
+      %td= link_to 'Join', join_url(:id => fleet.id)
+      %td= pluralize(pilot_count,"pilot") if fleet.display_pilot_count
+      %td
+        = "FC: #{fleet.fc}" if fleet.display_fc_info && !fleet.fc.blank?
+        - unless fleet.fc.blank? || fleet.xo.blank?
+          %br/ 
+        = "XO: #{fleet.xo}" if (fleet.display_fc_info && !fleet.xo.blank?)
+      %td
+        %small
+          = "Created by #{fleet.created_by}"
+          <br/>
+          = "#{time_ago_in_words(fleet.created_at)} ago"
+      / %td= link_to 'Edit', edit_fleet_path(fleet)
+      / %td= link_to 'Destroy', fleet, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'Create New Fleet', new_fleet_path

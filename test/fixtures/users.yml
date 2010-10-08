@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  char_name: MyString
+  corp_name: MyString
+  alliance_name: MyString
+  station_name: MyString
+  solar_system_name: MyString
+  constellation_name: MyString
+  region_name: MyString
+
+two:
+  char_name: MyString
+  corp_name: MyString
+  alliance_name: MyString
+  station_name: MyString
+  solar_system_name: MyString
+  constellation_name: MyString
+  region_name: MyString

@@ -1,0 +1,32 @@
+= form_for(@fleet) do |f|
+  - if @fleet.errors.any?
+    #error_explanation
+      %h3= "#{pluralize(@fleet.errors.count, "error")} prohibited this fleet from being saved:"
+      %ul
+        - @fleet.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.text_field :title, :placeholder=>"Title"
+  .field
+    = f.check_box :display_pilot_count
+    = f.label :display_pilot_count
+  .field
+    = f.check_box :display_fc_info
+    = f.label :display_fc_info, "Display FC info"
+  .field
+    = f.label :fc, "FC"
+    = f.text_field :fc
+  .field
+    = f.label :xo, "XO"
+    = f.text_field :xo
+  .field
+    = f.label :scope
+    %br/
+    #{f.radio_button :scope, 1} Corporation [#{@fleet.corp_name}]<br/>
+    #{f.radio_button :scope, 2} Alliance &lt;#{@fleet.alliance_name}&gt;<br/>
+    #{f.radio_button :scope, 3} Open<br/>
+  = f.hidden_field :created_by
+  = f.hidden_field :corp_name
+  = f.hidden_field :alliance_name
+  .actions
+    = f.submit

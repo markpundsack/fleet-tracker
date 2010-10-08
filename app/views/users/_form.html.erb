@@ -1,0 +1,45 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :char_name %><br />
+    <%= f.text_field :char_name %>
+  </div>
+  <div class="field">
+    <%= f.label :corp_name %><br />
+    <%= f.text_field :corp_name %>
+  </div>
+  <div class="field">
+    <%= f.label :alliance_name %><br />
+    <%= f.text_field :alliance_name %>
+  </div>
+  <div class="field">
+    <%= f.label :station_name %><br />
+    <%= f.text_field :station_name %>
+  </div>
+  <div class="field">
+    <%= f.label :solar_system_name %><br />
+    <%= f.text_field :solar_system_name %>
+  </div>
+  <div class="field">
+    <%= f.label :constellation_name %><br />
+    <%= f.text_field :constellation_name %>
+  </div>
+  <div class="field">
+    <%= f.label :region_name %><br />
+    <%= f.text_field :region_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

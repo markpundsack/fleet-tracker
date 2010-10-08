@@ -1,0 +1,26 @@
+.float
+  = link_to "Fleet #{@fleet.id}", @fleet
+  = link_to "Copy URL", "#"
+%h3.fleet= @fleet.title
+.hidden
+  %small= "Created by <unknown> #{time_ago_in_words(@fleet.created_at)} ago"
+  %br/
+  FC: #{@fleet.fc}<br/>
+  XO: #{@fleet.xo}<br/>
+  #{link_to 'Edit', edit_fleet_path(@fleet)}
+.subtitle#route Route: 08Z-JJ -> X-4WZD -> 6-OZJV
+%ul.summary#summary
+  - @sorted_systems.each do |sys|
+    %li #{sys[1].count} in #{sys[0]} (#{(sys[1].count / @fleet.users.count * 100).round}%)
+- if @fleet.users
+  %table.pilots
+    - @fleet.users.each do |user|
+      %tr
+        %td= link_to user.char_name, user
+        %td= user.corp_name
+        %td= user.alliance_name
+        %td= user.solar_system_name
+%ul.navigation
+  %li= link_to "Refresh", ""
+  %li= link_to "Leave Fleet", "#"
+  %li= link_to 'Back', fleets_path

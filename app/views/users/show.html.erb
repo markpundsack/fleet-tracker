@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Char name:</b>
+  <%= @user.char_name %>
+</p>
+
+<p>
+  <b>Corp name:</b>
+  <%= @user.corp_name %>
+</p>
+
+<p>
+  <b>Alliance name:</b>
+  <%= @user.alliance_name %>
+</p>
+
+<p>
+  <b>Station name:</b>
+  <%= @user.station_name %>
+</p>
+
+<p>
+  <b>Solar system name:</b>
+  <%= @user.solar_system_name %>
+</p>
+
+<p>
+  <b>Constellation name:</b>
+  <%= @user.constellation_name %>
+</p>
+
+<p>
+  <b>Region name:</b>
+  <%= @user.region_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
