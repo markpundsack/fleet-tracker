@@ -22,6 +22,7 @@
   .field
     = f.label :scope
     %br/
+    #{f.radio_button :scope, 0} Private<br/>
     #{f.radio_button :scope, 1} Corporation [#{@fleet.corp_name}]<br/>
     #{f.radio_button :scope, 2} Alliance &lt;#{@fleet.alliance_name}&gt;<br/>
     #{f.radio_button :scope, 3} Open<br/>

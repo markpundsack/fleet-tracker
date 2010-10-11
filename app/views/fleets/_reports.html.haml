@@ -1,0 +1,4 @@
+= section("Reports")
+- unless @fleet.reports.empty?
+  %table.section.reports#reports 
+    = render @fleet.reports

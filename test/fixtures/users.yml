@@ -17,3 +17,21 @@ two:
   solar_system_name: MyString
   constellation_name: MyString
   region_name: MyString
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  char_name          :string(255)
+#  corp_name          :string(255)
+#  alliance_name      :string(255)
+#  station_name       :string(255)
+#  solar_system_name  :string(255)
+#  constellation_name :string(255)
+#  region_name        :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  fleet_id           :integer
+#
+

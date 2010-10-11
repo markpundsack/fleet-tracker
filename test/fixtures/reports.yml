@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  char_name: MyString
+  solar_system_name: MyString
+  reds: 1
+  neutrals: 1
+
+two:
+  char_name: MyString
+  solar_system_name: MyString
+  reds: 1
+  neutrals: 1
+
+# == Schema Information
+#
+# Table name: reports
+#
+#  id                :integer         not null, primary key
+#  char_name         :string(255)
+#  solar_system_name :string(255)
+#  reds              :integer
+#  neutrals          :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  fleet_id          :integer
+#
+

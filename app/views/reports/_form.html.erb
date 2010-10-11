@@ -1,0 +1,34 @@
+<%= form_for [@fleet, @report] do |f| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>f.hidden_field :fleet_id</div>
+
+  <div class="field">
+    <%= f.label :char_name %><br />
+    <%= f.text_field :char_name %>
+  </div>
+  <div class="field">
+    <%= f.label :solar_system_name %><br />
+    <%= f.text_field :solar_system_name %>
+  </div>
+  <div class="field">
+    <%= f.label :reds %><br />
+    <%= f.text_field :reds %>
+  </div>
+  <div class="field">
+    <%= f.label :neutrals %><br />
+    <%= f.text_field :neutrals %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

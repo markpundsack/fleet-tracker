@@ -72,6 +72,34 @@ table.fleets {
 tr.fleet {
   background: #e6e6e6; }
 
+table.pilots td {
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-left: 0; }
+
+.new_report {
+  display: inline; }
+
+.round {
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px; }
+
+.section {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  padding: 5px;
+  margin: 0 0 5px 0; }
+  .section ul, .section tr, .section td {
+    padding: 0 0; }
+  .section li {
+    list-style-type: none; }
+
+.section-head {
+  font-weight: bold; }
+
 .hidden {
   display: none; }
 
@@ -83,18 +111,6 @@ tr.fleet {
 
 h3.fleet {
   margin-bottom: 0px; }
-
-ul.summary {
-  margin: 0;
-  padding: 0 0; }
-
-.summary li {
-  list-style-type: none; }
-
-.round {
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  border-radius: 15px; }
 
 /* Sign up button */
 a.signup_button {

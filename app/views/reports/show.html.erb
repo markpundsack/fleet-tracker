@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Char name:</b>
+  <%= @report.char_name %>
+</p>
+
+<p>
+  <b>Solar system name:</b>
+  <%= @report.solar_system_name %>
+</p>
+
+<p>
+  <b>Reds:</b>
+  <%= @report.reds %>
+</p>
+
+<p>
+  <b>Neutrals:</b>
+  <%= @report.neutrals %>
+</p>
+
+
+<%= link_to 'Edit', edit_fleet_report_path(@fleet,@report) %> |
+<%= link_to 'Back', fleet_reports_path(@fleet) %>

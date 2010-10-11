@@ -4,7 +4,10 @@
       - pilot_count = fleet.users.count
       %td= fleet.title
       %td= link_to 'View', fleet
-      %td= link_to 'Join', join_url(:id => fleet.id)
+      - if @user.in_fleet?(fleet)
+        %td= link_to 'Leave', leave_path
+      - else
+        %td= link_to 'Join', join_url(:id => fleet.id)
       %td= pluralize(pilot_count,"pilot") if fleet.display_pilot_count
       %td
         = "FC: #{fleet.fc}" if fleet.display_fc_info && !fleet.fc.blank?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101008094941) do
+ActiveRecord::Schema.define(:version => 20101011071911) do
 
   create_table "fleets", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(:version => 20101008094941) do
     t.string   "corp_name"
     t.string   "alliance_name"
   end
+
+  create_table "reports", :force => true do |t|
+    t.string   "char_name"
+    t.string   "solar_system_name"
+    t.integer  "reds"
+    t.integer  "neutrals"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "fleet_id"
+  end
+
+  add_index "reports", ["solar_system_name"], :name => "index_reports_on_solar_system_name"
 
   create_table "users", :force => true do |t|
     t.string   "char_name"

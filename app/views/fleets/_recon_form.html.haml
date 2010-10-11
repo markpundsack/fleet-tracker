@@ -1,0 +1,19 @@
+= form_for [@fleet,@fleet.reports.build] do |f|
+  = f.hidden_field :reds, :value => 0
+  = f.hidden_field :neutrals, :value => 0
+  .actions= f.submit "System is clear"
+= form_for [@fleet,@fleet.reports.build] do |f|
+  .field
+    = f.label :reds
+    = f.text_field :reds, :size => 3
+    - [0,1,2,3,4,5,6,7,8,9,10,20,30,40,50].each do |i|
+      = form_for [@fleet,@fleet.reports.build] do |f|
+        = f.hidden_field :reds, :value => i
+        = f.submit i
+  .field
+    = f.label :neutrals
+    = f.text_field :neutrals, :size => 3
+    - [0,1,2,3,4,5,6,7,8,9,10,20,30,40,50].each do |i|
+      = form_for [@fleet,@fleet.reports.build] do |f|
+        = f.hidden_field :neutrals, :value => i
+        = f.submit i

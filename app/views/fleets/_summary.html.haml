@@ -1,0 +1,4 @@
+= section("Summary")
+%ul.section.summary#summary
+  - @sorted_systems.each do |sys|
+    %li #{sys[1].count} in #{sys[0]} (#{(sys[1].count.to_f / @fleet.users.count.to_f * 100).round}%)

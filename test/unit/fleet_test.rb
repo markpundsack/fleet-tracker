@@ -6,3 +6,22 @@ class FleetTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: fleets
+#
+#  id                  :integer         not null, primary key
+#  title               :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  scope               :integer
+#  display_pilot_count :boolean
+#  display_fc_info     :boolean
+#  fc                  :string(255)
+#  xo                  :string(255)
+#  created_by          :string(255)
+#  corp_name           :string(255)
+#  alliance_name       :string(255)
+#
+

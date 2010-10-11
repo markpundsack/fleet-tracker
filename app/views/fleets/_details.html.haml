@@ -1,0 +1,7 @@
+= section "Details", "details", "plus"
+.section#details(style="display:none;")
+  %small= "Created by #{@fleet.created_by} #{time_ago_in_words(@fleet.created_at)} ago"
+  %br/
+  FC: #{@fleet.fc}<br/>
+  XO: #{@fleet.xo}<br/>
+  #{link_to 'Edit', edit_fleet_path(@fleet)}

@@ -1,0 +1,31 @@
+<h1>Listing reports</h1>
+
+<table>
+  <tr>
+    <th>Char name</th>
+    <th>Solar system name</th>
+    <th>Reds</th>
+    <th>Neutrals</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reports.each do |report| %>
+  <tr>
+    <td><%= report.char_name %></td>
+    <td><%= report.solar_system_name %></td>
+    <td><%= report.reds %></td>
+    <td><%= report.neutrals %></td>
+    <td><%= link_to 'Show', [@fleet,report] %></td>
+    <td><%= link_to 'Edit', edit_fleet_report_path(@fleet,report) %></td>
+    <td><%= link_to 'Destroy', [@fleet,report], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Report', new_fleet_report_path %>
+<%= link_to 'Back', fleet_path(@fleet) %>
+

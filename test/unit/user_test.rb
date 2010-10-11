@@ -6,3 +6,21 @@ class UserTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  char_name          :string(255)
+#  corp_name          :string(255)
+#  alliance_name      :string(255)
+#  station_name       :string(255)
+#  solar_system_name  :string(255)
+#  constellation_name :string(255)
+#  region_name        :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  fleet_id           :integer
+#
+

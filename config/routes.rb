@@ -1,7 +1,9 @@
 FleetTracker::Application.routes.draw do
+  match 'fleets/leave' => 'fleets#leave', :as => :leave
+  resources :fleets do
+    resources :reports
+  end
   resources :users
-
-  resources :fleets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -14,6 +16,8 @@ FleetTracker::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
   match 'fleets/:id/join' => 'fleets#join', :as => :join
+  match 'igb_required' => 'pages#igb_required'
+  match 'about' => 'pages#about'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
