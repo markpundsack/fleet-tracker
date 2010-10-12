@@ -1,15 +1,18 @@
-== Eve Ranch Fleet Tracker
+Eve Ranch Fleet Tracker
+----------------------
 
 This is a lightweight application that augments Eve Online's fleet
 handlng by automatically tracking the locations of members in the fleet
 and displaying their whereabouts, as well as summary information and
 recon reports.
 
-== Getting Started
+Getting Started
+---------------
 
 Requires sqlite3, haml, and jquery-rails, but that should be it.
 
-== Using
+Using
+-----
 
 Unfortunately there's no Eve Online fleet API, so you have to duplicate
 some effort.
@@ -37,7 +40,8 @@ fleet screen.
 
 That's it! Hope you enjoy.
 
-== Todo
+Todo
+----
 
 Obviously, the location information could be more useful if it were
 displayed graphically, so overlayed onto a Dotlan map of the region
