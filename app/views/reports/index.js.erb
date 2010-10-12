@@ -1,0 +1,6 @@
+<% unless @reports.empty? %>
+  <% @reports.each do |r| %>
+    $(".report[data-id='<%= r.solar_system_name%>']").remove();
+  <% end %>
+  $("#reports").prepend($("<%= raw escape_javascript(render(@reports))%>").hide().fadeIn('slow'));
+<% end %>

@@ -1,3 +1,4 @@
-%tr
-  %td.report= report_in_words(report)
-  %td.report= time_ago_in_words(report.updated_at) + " ago"
+%tr.report{:data => {:time => "#{report.updated_at.to_i}", 
+                     :id => "#{report.solar_system_name}"}}
+  %td= report_in_words(report)
+  %td= time_ago_in_words(report.updated_at) + " ago"

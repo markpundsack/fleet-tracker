@@ -15,12 +15,12 @@
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
+  <tr class="user" id="user_<%= user.id %>">
     <td><%= user.char_name %></td>
     <td><%= user.corp_name %></td>
     <td><%= user.alliance_name %></td>
-    <td><%= user.station_name %></td>
-    <td><%= user.solar_system_name %></td>
+    <td class="station"><%= user.station_name %></td>
+    <td class="system"><%= user.solar_system_name %></td>
     <td><%= user.constellation_name %></td>
     <td><%= user.region_name %></td>
     <td><%= link_to 'Show', user %></td>

@@ -2,7 +2,7 @@
   - @fleets.each do |fleet|
     %tr[fleet]
       - pilot_count = fleet.users.count
-      %td= fleet.title
+      %td= link_to fleet.title, fleet
       %td= link_to 'View', fleet
       - if @user.in_fleet?(fleet)
         %td= link_to 'Leave', leave_path

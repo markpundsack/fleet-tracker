@@ -1,18 +1,19 @@
-.float
-  = link_to "Fleet #{@fleet.id}", @fleet
-  = button_to_function "Details", "$('details').toggle()"
-  /= button_to "Copy URL", "#"
-%h3.fleet= @fleet.title
-= render 'details'
-.subtitle#route Route: 08Z-JJ -> X-4WZD -> 6-OZJV
-= render 'summary'
-= render 'reports'
-= render 'recon'
-= render 'pilots'
-%ul.navigation
-  %li= link_to "Refresh", ""
-  - if @user && @user.in_fleet?(@fleet)
-    %li= link_to 'Leave Fleet', leave_path
-  - else
-    %li= link_to 'Join Fleet', join_url(:id => @fleet)
-  %li= link_to 'Back', fleets_path
+%div[@fleet]{:data => {:id => "#{@fleet.id}", :time => "#{Time.now.to_i}"}}
+  .float
+    = link_to "Fleet #{@fleet.id}", @fleet
+    /= button_to_function "Details", "$('details').toggle()"
+    /= button_to "Copy URL", "#"
+  %h3.fleet= @fleet.title
+  = render 'details'
+  /.subtitle#route Route: 08Z-JJ -> X-4WZD -> 6-OZJV
+  = render 'summary'
+  = render 'reports'
+  = render 'recon'
+  = render 'pilots'
+  %ul.navigation
+    %li= link_to "Refresh", ""
+    - if @user && @user.in_fleet?(@fleet)
+      %li= link_to 'Leave Fleet', leave_path
+    - else
+      %li= link_to 'Join Fleet', join_url(:id => @fleet)
+    %li= link_to 'Back', fleets_path

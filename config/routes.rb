@@ -18,6 +18,7 @@ FleetTracker::Application.routes.draw do
   match 'fleets/:id/join' => 'fleets#join', :as => :join
   match 'igb_required' => 'pages#igb_required'
   match 'about' => 'pages#about'
+  match 'ping' => 'users#ping'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

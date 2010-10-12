@@ -1,0 +1,7 @@
+if @fleet.user_changes_since?(params[:after])
+  inner = '' 
+  @fleet.summarize.each do |sys|
+    inner += "<li> #{sys[1].count} in #{sys[0]} (#{(sys[1].count.to_f / @fleet.users.count.to_f * 100).round}%)</li>"
+  end
+  page["ul.section.summary#summary"].html(inner)
+end

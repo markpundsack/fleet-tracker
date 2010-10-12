@@ -38,6 +38,8 @@ GEM
       abstract (>= 1.0.0)
     haml (3.0.18)
     i18n (0.4.1)
+    jquery-rails (0.2.2)
+      rails (~> 3.0)
     linecache19 (0.5.11)
       ruby_core_source (>= 0.1.4)
     mail (2.2.5)
@@ -87,6 +89,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   haml
+  jquery-rails
   rails (= 3.0.0)
   ruby-debug19
   sqlite3-ruby

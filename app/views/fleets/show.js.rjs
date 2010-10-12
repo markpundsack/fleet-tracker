@@ -1,0 +1,10 @@
+page[".fleet"].attr("data-time",Time.now.to_i) if @fleet.new_reports?(params[:after]) || @fleet.user_changes_since?(params[:after])
+if @fleet.user_changes_since?(params[:after])
+  inner = '' 
+  @fleet.summarize.each do |sys|
+    inner += "<li> #{sys[1].count} in #{sys[0]} (#{(sys[1].count.to_f / @fleet.users.count.to_f * 100).round}%)</li>"
+  end
+  page["ul.section.summary#summary"].html(inner)
+end
+page[".reports"].html(render @fleet.reports) if @fleet.new_reports?(params[:after])
+page[".pilots"].html(render @fleet.users) if @fleet.user_changes_since?(params[:after])

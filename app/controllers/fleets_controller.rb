@@ -15,22 +15,21 @@ class FleetsController < ApplicationController
 
   # GET /fleets/1
   # GET /fleets/1.xml
+  # GET /fleets/1.js
   def show
     @fleet = Fleet.find(params[:id])
-    # Calculate summmary
-    @sorted_systems = @fleet.summarize
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @fleet }
+      format.js
     end
   end
 
   # GET /fleets/1/join
   def join
     @fleet = Fleet.find(params[:id])
-    @user.fleet = @fleet
-    if @user.save
+    if @user.join_fleet(@fleet)
       flash[:notice] = "Fleet joined"
       redirect_to @fleet
     else
@@ -112,29 +111,4 @@ class FleetsController < ApplicationController
     end
   end
 
-  private
-  
-  def update_current_user
-    # Total hack for development out of game
-    if params[:set_user_id]
-      if params[:set_user_id] == "clear"
-        # Delete cookie
-        cookies[:current_user_id] = nil
-      else 
-        cookies[:current_user_id] = {:value => params[:set_user_id],
-                                     :expires => 1.year.from_now.utc }
-      end
-    end
-    if cookies[:current_user_id]
-      @user = User.find(cookies[:current_user_id])
-    else
-      @user = User.new_from_env(request.env)
-    end
-  end
-  
-  def igb?
-    #redirect_to igb_required_path unless @user
-    render 'igb_required' unless @user
-  end
-  
 end

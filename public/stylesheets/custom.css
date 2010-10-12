@@ -28,16 +28,14 @@ body {
   background: white; }
 
 /* Links */
-a {
+a, .link {
   color: #09c;
   text-decoration: none; }
-
-a:hover {
-  cover: #069;
-  text-decoration: none; }
-
-a:visited {
-  color: #069; }
+  a :hover, .link :hover {
+    cover: #069;
+    text-decoration: none; }
+  a :visited, .link :visited {
+    color: #069; }
 
 /* Navigation */
 .right {
@@ -111,6 +109,12 @@ table.pilots td {
 
 h3.fleet {
   margin-bottom: 0px; }
+
+.stale td {
+  font-style: italic; }
+
+.abandoned td {
+  text-decoration: line-through; }
 
 /* Sign up button */
 a.signup_button {

@@ -57,5 +57,19 @@ class Fleet < ActiveRecord::Base
     sorted_systems.reverse!
     return sorted_systems
   end
+  
+  def scope_to_s
+    map = ["Private", "Corp", "Alliance", "Open"]
+    return map[scope]
+  end
+  
+  def new_reports?(after = 0)
+    self.reports.where("updated_at > ?", Time.at(after.to_i + 1)).count > 0
+  end
+  
+  def user_changes_since?(after = 0)
+    self.users.where("changed_at > ?", Time.at(after.to_i + 1)).count > 0
+  end
+
 end
 

@@ -1,4 +1,23 @@
 class UsersController < ApplicationController
+  before_filter :update_current_user
+
+  # GET /ping.html
+  # GET /ping.js
+  def ping
+    if cookies[:current_user_id]
+      @user = User.find(cookies[:current_user_id])
+    else
+      @user = User.new_or_update_from_env(request.env)
+    end
+    @current_user_changed = @user.changed?
+    @user.updated_at = Time.now # To force an update
+    @user.save
+    respond_to do |format|
+      format.html { render @curent_user_changed ? 'ping_unchanged' : 'ping' }
+      format.js
+    end
+  end
+  
   # GET /users
   # GET /users.xml
   def index
@@ -26,13 +45,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     if request.env["HTTP_EVE_TRUSTED"]
-      @user.char_name=request.env["HTTP_EVE_CHARNAME"]
-      @user.corp_name=request.env["HTTP_EVE_CORPNAME"]
-      @user.alliance_name=request.env["HTTP_EVE_ALLIANCENAME"]
-      @user.region_name=request.env["HTTP_EVE_REGIONNAME"]
-      @user.constellation_name=request.env["HTTP_EVE_CONSTELLATIONNAME"]
-      @user.solar_system_name=request.env["HTTP_EVE_SOLARSYSTEMNAME"]
-      @user.station_name=request.env["HTTP_EVE_STATIONNAME"]
+      @user.set_from_env(request.env)
     end
 
     respond_to do |format|
