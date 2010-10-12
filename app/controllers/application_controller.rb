@@ -14,14 +14,19 @@ class ApplicationController < ActionController::Base
     end
     if cookies[:current_user_id]
       @user = User.find(cookies[:current_user_id])
+      @user.updated_at = Time.now
+      @user.save
     else
       @user = User.new_or_update_from_env_and_save(request.env)
     end
   end
   
   def igb?
-    #redirect_to igb_required_path unless @user
-    render 'igb_required' unless @user
+    unless @user
+      flash[:error] = "IGB Required"
+      flash[:notice] = "You must be using the Eve in-game-browser to list or create fleets. If you're already in a fleet, you can copy the direct fleet URL while in-game to your out of game browser."
+      render :template => 'pages/about'
+    end
   end
   
 end
