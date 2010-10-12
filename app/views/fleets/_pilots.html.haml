@@ -1,3 +1,5 @@
+%ul.navigation.round.right
+  %li=link_to "Purge", fleet_purge_path(@fleet)
 = section "Pilots"
 - unless @fleet.users.empty?
   %table.section.pilots#pilots

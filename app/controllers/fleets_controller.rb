@@ -13,6 +13,12 @@ class FleetsController < ApplicationController
     end
   end
 
+  def purge
+    @fleet = Fleet.find(params[:id])
+    @users = @fleet.users.where(['updated_at < ?', 10.minutes.ago])
+    @users.map(&:leave_fleet)
+  end
+  
   # GET /fleets/1
   # GET /fleets/1.xml
   # GET /fleets/1.js

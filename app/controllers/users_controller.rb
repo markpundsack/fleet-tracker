@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def purge
+    @users = User.abondoned.map(&:destroy)
+  end
+  
   # GET /users
   # GET /users.xml
   def index
