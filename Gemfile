@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'ruby', '1.9.2'
 gem 'rails', '3.0.0'
 
 # Bundle edge Rails instead:
@@ -23,7 +24,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'haml'
 #gem 'eve'
-gem 'annotate'
 gem 'jquery-rails'
 
 # Bundle gems for the local environment. Make sure to
@@ -34,4 +34,5 @@ gem 'jquery-rails'
 # end
 group :deveopment do
   gem 'ruby-debug19'
+  gem 'annotate'
 end
