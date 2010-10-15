@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
     # Total hack for development out of game
     if params[:set_user_id]
       if params[:set_user_id] == "clear"
-        # Delete cookie
-        cookies[:current_user_id] = nil
+        cookies.delete :current_user_id
       else 
         cookies[:current_user_id] = {:value => params[:set_user_id],
                                      :expires => 1.year.from_now.utc }
@@ -23,8 +22,8 @@ class ApplicationController < ActionController::Base
   
   def igb?
     unless @user
-      flash[:error] = "IGB and Trusted Site Required"
-      flash[:notice] = "You must be using the Eve in-game-browser and mark the site as 'trusted' to list or create fleets. If you're already in a fleet, you can copy the direct fleet URL while in-game to your out of game browser."
+      flash.now[:error] = "IGB and Trusted Site Required"
+      flash.now[:notice] = "You must be using the Eve in-game-browser and mark the site as 'trusted' to list or create fleets. If you're already in a fleet, you can copy the direct fleet URL while in-game to your out of game browser."
       render :template => 'pages/about'
     end
   end
