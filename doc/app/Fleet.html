@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Fleet</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./app/models/fleet_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/models/fleet.rb">app/models/fleet.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">ActiveRecord::Base</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new_from_user">::new_from_user</a></li>
+					
+					<li><a href="#method-c-visible">::visible</a></li>
+					
+					<li><a href="#method-i-new_reports%3F">#new_reports?</a></li>
+					
+					<li><a href="#method-i-scope_to_s">#scope_to_s</a></li>
+					
+					<li><a href="#method-i-summarize">#summarize</a></li>
+					
+					<li><a href="#method-i-user_changes_since%3F">#user_changes_since?</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./Fleet.html">Fleet</a></li>
+				
+					<li><a href="./FleetsController.html">FleetsController</a></li>
+				
+					<li><a href="./FleetsHelper.html">FleetsHelper</a></li>
+				
+					<li><a href="./PagesController.html">PagesController</a></li>
+				
+					<li><a href="./Report.html">Report</a></li>
+				
+					<li><a href="./ReportsController.html">ReportsController</a></li>
+				
+					<li><a href="./ReportsHelper.html">ReportsHelper</a></li>
+				
+					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Fleet</h1>
+
+		<div id="description">
+			<h2>Schema Information</h2>
+<p>
+Table name: fleets
+</p>
+<pre>
+ id                  :integer         not null, primary key
+ title               :string(255)
+ created_at          :datetime
+ updated_at          :datetime
+ scope               :integer
+ display_pilot_count :boolean
+ display_fc_info     :boolean
+ fc                  :string(255)
+ xo                  :string(255)
+ created_by          :string(255)
+ corp_name           :string(255)
+ alliance_name       :string(255)</pre>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-from-user-method" class="method-detail ">
+				<a name="method-c-new_from_user"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new_from_user</span><span
+						class="method-args">(user)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-from-user-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/fleet.rb, line 27</span>
+27:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_from_user</span>(<span class="ruby-identifier">user</span>)
+28:     <span class="ruby-identifier">fleet</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value">:display_pilot_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>, 
+29:                 <span class="ruby-value">:display_fc_info</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+30:                 <span class="ruby-value">:scope</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>) <span class="ruby-comment cmt">#alliance</span>
+31:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>
+32:       <span class="ruby-identifier">fleet</span>.<span class="ruby-identifier">title</span> = <span class="ruby-node">&quot;#{user.char_name}'s Fleet&quot;</span>
+33:       <span class="ruby-identifier">fleet</span>.<span class="ruby-identifier">fc</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">char_name</span>
+34:       <span class="ruby-identifier">fleet</span>.<span class="ruby-identifier">xo</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">char_name</span>
+35:       <span class="ruby-identifier">fleet</span>.<span class="ruby-identifier">created_by</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">char_name</span>
+36:       <span class="ruby-identifier">fleet</span>.<span class="ruby-identifier">corp_name</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">corp_name</span>
+37:       <span class="ruby-identifier">fleet</span>.<span class="ruby-identifier">alliance_name</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">alliance_name</span>
+38:     <span class="ruby-keyword kw">end</span>
+39:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="visible-method" class="method-detail ">
+				<a name="method-c-visible"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">visible</span><span
+						class="method-args">(user)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="visible-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/fleet.rb, line 41</span>
+41:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">visible</span>(<span class="ruby-identifier">user</span>)
+42:     <span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;scope = 3 or (scope = 2 and alliance_name = '#{user.alliance_name}') or (scope = 1 and corp_name = '#{user.corp_name}')&quot;</span>)
+43:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="new-reports--method" class="method-detail ">
+				<a name="method-i-new_reports%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new_reports?</span><span
+						class="method-args">(after = 0)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-reports--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/fleet.rb, line 66</span>
+66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_reports?</span>(<span class="ruby-identifier">after</span> = <span class="ruby-value">0</span>)
+67:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reports</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value str">&quot;updated_at &gt; ?&quot;</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">after</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)).<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+68:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="scope-to-s-method" class="method-detail ">
+				<a name="method-i-scope_to_s"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">scope_to_s</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="scope-to-s-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/fleet.rb, line 61</span>
+61:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scope_to_s</span>
+62:     <span class="ruby-identifier">map</span> = [<span class="ruby-value str">&quot;Private&quot;</span>, <span class="ruby-value str">&quot;Corp&quot;</span>, <span class="ruby-value str">&quot;Alliance&quot;</span>, <span class="ruby-value str">&quot;Open&quot;</span>]
+63:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">map</span>[<span class="ruby-identifier">scope</span>]
+64:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="summarize-method" class="method-detail ">
+				<a name="method-i-summarize"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">summarize</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="summarize-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/fleet.rb, line 45</span>
+45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">summarize</span>
+46:     <span class="ruby-comment cmt"># Calculate summmary</span>
+47:     <span class="ruby-identifier">system</span> = {}
+48:     <span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+49:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">system</span>[<span class="ruby-identifier">user</span>.<span class="ruby-identifier">solar_system_name</span>].<span class="ruby-identifier">nil?</span>
+50:         <span class="ruby-identifier">system</span>[<span class="ruby-identifier">user</span>.<span class="ruby-identifier">solar_system_name</span>] = [<span class="ruby-identifier">user</span>]
+51:       <span class="ruby-keyword kw">else</span>
+52:         <span class="ruby-identifier">system</span>[<span class="ruby-identifier">user</span>.<span class="ruby-identifier">solar_system_name</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">user</span>
+53:       <span class="ruby-keyword kw">end</span>
+54:     <span class="ruby-keyword kw">end</span>
+55:     <span class="ruby-comment cmt"># Sort based on number of pilots in each system</span>
+56:     <span class="ruby-identifier">sorted_systems</span> = <span class="ruby-identifier">system</span>.<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">count</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">count</span>}
+57:     <span class="ruby-identifier">sorted_systems</span>.<span class="ruby-identifier">reverse!</span>
+58:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">sorted_systems</span>
+59:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="user-changes-since--method" class="method-detail ">
+				<a name="method-i-user_changes_since%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">user_changes_since?</span><span
+						class="method-args">(after = 0)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="user-changes-since--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/fleet.rb, line 70</span>
+70:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">user_changes_since?</span>(<span class="ruby-identifier">after</span> = <span class="ruby-value">0</span>)
+71:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">users</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value str">&quot;changed_at &gt; ?&quot;</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">after</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)).<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+72:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
