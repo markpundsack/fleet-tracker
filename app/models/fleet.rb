@@ -28,7 +28,7 @@ class Fleet < ActiveRecord::Base
     fleet = new(:display_pilot_count => true, 
                 :display_fc_info => true,
                 :scope => 2) #alliance
-    if @user
+    if user
       fleet.title = "#{user.char_name}'s Fleet"
       fleet.fc = user.char_name
       fleet.xo = user.char_name
@@ -36,6 +36,7 @@ class Fleet < ActiveRecord::Base
       fleet.corp_name = user.corp_name
       fleet.alliance_name = user.alliance_name
     end
+    return fleet
   end
   
   def self.visible(user)
