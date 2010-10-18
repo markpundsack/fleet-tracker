@@ -83,6 +83,12 @@ table.pilots td {
   -webkit-border-radius: 15px;
   border-radius: 15px; }
 
+.round_box {
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  background-color: white; }
+
 .section {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
