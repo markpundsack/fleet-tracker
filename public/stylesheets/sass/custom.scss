@@ -9,7 +9,6 @@ $border-radius: 15px;
 }
 
 body {
-  //background: #cff;
   background: $background-color;
 }
 
@@ -115,6 +114,11 @@ table.pilots td {
 
 .round {
   @include round($border-radius);
+}
+
+.round_box {
+	@include round($border-radius);
+  background-color: $foreground-color;	
 }
 
 .section {

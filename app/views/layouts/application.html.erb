@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <%= render 'layouts/header' %>
-      <div id="content" class="round">
+      <div id="content" class="round_box">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, :class => "flash #{key}") %>
         <% end %>
