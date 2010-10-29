@@ -34,7 +34,7 @@ gem 'hashtrain-acts_as_random_id', :require => 'acts_as_random_id'
 #   gem 'webrat'
 # end
 group :deveopment do
-  gem 'ruby-debug19'
+#  gem 'ruby-debug19'
   gem 'annotate'
   gem 'haml-rails'
 end
