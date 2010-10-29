@@ -16,16 +16,22 @@
   .field
     = f.label :fc, "FC"
     = f.text_field :fc
+    (Exact match allows admin)
   .field
     = f.label :xo, "XO"
     = f.text_field :xo
+    (Exact match allows admin)
   .field
-    = f.label :scope, "Open to"
+    = f.label :scope, "Visible to"
     %br/
     #{f.radio_button :scope, 0} Private<br/>
     #{f.radio_button :scope, 1} Corporation [#{@fleet.corp_name}]<br/>
     #{f.radio_button :scope, 2} Alliance &lt;#{@fleet.alliance_name}&gt;<br/>
     #{f.radio_button :scope, 3} Anyone<br/>
+  .field
+    = f.check_box :direct_access
+    = f.label :direct_access, "Allow direct access with fleet URL"
+    (Required to view out-of-game)
   = f.hidden_field :created_by
   = f.hidden_field :corp_name
   = f.hidden_field :alliance_name

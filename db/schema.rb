@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101029065118) do
+ActiveRecord::Schema.define(:version => 20101029103217) do
 
   create_table "fleets", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20101029065118) do
     t.string   "created_by"
     t.string   "corp_name"
     t.string   "alliance_name"
+    t.boolean  "direct_access"
   end
 
   create_table "global_admins", :force => true do |t|

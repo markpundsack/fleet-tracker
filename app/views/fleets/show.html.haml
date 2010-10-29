@@ -1,6 +1,6 @@
 %div[@fleet]{:data => {:id => "#{@fleet.id}", :time => "#{Time.now.to_i}"}}
   .float
-    = link_to "Fleet #{@fleet.id}", @fleet
+    = link_to "Fleet #{@fleet.id}", @fleet, :title => "Copy this URL to invite others to join or to view in your out-of-game browser"
     /= button_to_function "Details", "$('details').toggle()"
     /= button_to "Copy URL", "#"
   %h3.fleet= @fleet.title

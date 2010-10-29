@@ -23,13 +23,19 @@ class FleetsController < ApplicationController
   # GET /fleets/1.xml
   # GET /fleets/1.js
   def show
-    @fleet = Fleet.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @fleet }
-      format.js
+    if (Fleet.exists?(params[:id]))
+      @fleet = Fleet.find(params[:id])
+      if @fleet.direct_access || @fleet.visible_to?(@current_user)
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @fleet }
+          format.js
+        end
+        return
+      end
     end
+    flash[:notice] = "You hacker!"
+    redirect_to root_path
   end
 
   # GET /fleets/1/join

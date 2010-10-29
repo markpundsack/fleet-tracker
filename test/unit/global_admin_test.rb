@@ -6,3 +6,14 @@ class GlobalAdminTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: global_admins
+#
+#  id         :integer         not null, primary key
+#  char_name  :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

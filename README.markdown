@@ -47,3 +47,8 @@ Obviously, the location information could be more useful if it were
 displayed graphically, so overlayed onto a Dotlan map of the region
 you're currently flying in.
 
+Recon reports can currently be submitted even if you're not in the fleet.
+
+Fleets should have option to force people to join before viewing the fleet. (But this is tricky with out-of-game viewing.)
+
+Fleets should automatically disappear after some time, or after the last person leaves the fleet. Maybe if pilot purging were automatic too, then this would work well. Could do a purge once an hour...

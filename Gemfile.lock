@@ -1,5 +1,6 @@
 GEM
   remote: http://rubygems.org/
+  remote: http://gems.github.com/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.0)
@@ -42,6 +43,7 @@ GEM
       activesupport (~> 3.0.0)
       haml (~> 3.0.18)
       railties (~> 3.0.0)
+    hashtrain-acts_as_random_id (1.1.0)
     i18n (0.4.1)
     jquery-rails (0.2.2)
       rails (~> 3.0)
@@ -95,6 +97,7 @@ DEPENDENCIES
   annotate
   haml
   haml-rails
+  hashtrain-acts_as_random_id
   jquery-rails
   rails (= 3.0.0)
   ruby-debug19

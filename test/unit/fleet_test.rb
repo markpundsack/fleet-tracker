@@ -7,6 +7,7 @@ class FleetTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: fleets
@@ -23,5 +24,6 @@ end
 #  created_by          :string(255)
 #  corp_name           :string(255)
 #  alliance_name       :string(255)
+#  direct_access       :boolean
 #
 
