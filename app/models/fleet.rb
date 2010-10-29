@@ -40,7 +40,8 @@ class Fleet < ActiveRecord::Base
   end
   
   def self.visible(user)
-    where("scope = 3 or (scope = 2 and alliance_name = '#{user.alliance_name}') or (scope = 1 and corp_name = '#{user.corp_name}')")
+    where("scope = 3 or (scope = 2 and alliance_name = ?) or (scope = 1 and corp_name = ?) or created_by = ? or fc = ? or xo = ?", 
+          user.alliance_name, user.corp_name, user.char_name, user.char_name, user.char_name)
   end  
 
   def summarize
@@ -60,7 +61,7 @@ class Fleet < ActiveRecord::Base
   end
   
   def scope_to_s
-    map = ["Private", "Corp", "Alliance", "Open"]
+    map = ["Private", "Corp", "Alliance", "Anyone"]
     return map[scope]
   end
   
@@ -71,6 +72,17 @@ class Fleet < ActiveRecord::Base
   def user_changes_since?(after = 0)
     self.users.where("changed_at > ?", Time.at(after.to_i + 1)).count > 0
   end
-
+  
+  def admin?(user)
+    return false if user.nil?
+    return true if user.global_admin?
+    case user.char_name
+    when self.fc, self.xo, self.created_by
+      return true
+    else
+      return false
+    end
+  end
+  
 end
 

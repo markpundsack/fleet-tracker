@@ -1,15 +1,15 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(function() {
-  if ($(".fleet").length > 0) {
-    setTimeout(updateFleet, 10000);
+  if ($("#details").length > 0) {
+    setTimeout(updateFleet, 20*1000);
     
     $(".toggle").click(function() {
       $(this).next(".section").slideToggle("fast");
       return false;
     });
   } else if ($("#ping").length > 0) {
-    setTimeout(ping, 10000);
+    setTimeout(ping, 20*1000);
   }
 });
 

@@ -1,5 +1,5 @@
 .navigation.right.small
-  = link_to "Purge", fleet_purge_path(@fleet)
+  = link_to "Purge", fleet_purge_path(@fleet) if @fleet.admin?(@current_user)
 = section "Pilots"
 - unless @fleet.users.empty?
   %table.section.pilots#pilots

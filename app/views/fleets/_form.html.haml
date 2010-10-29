@@ -20,12 +20,12 @@
     = f.label :xo, "XO"
     = f.text_field :xo
   .field
-    = f.label :scope
+    = f.label :scope, "Open to"
     %br/
     #{f.radio_button :scope, 0} Private<br/>
     #{f.radio_button :scope, 1} Corporation [#{@fleet.corp_name}]<br/>
     #{f.radio_button :scope, 2} Alliance &lt;#{@fleet.alliance_name}&gt;<br/>
-    #{f.radio_button :scope, 3} Open<br/>
+    #{f.radio_button :scope, 3} Anyone<br/>
   = f.hidden_field :created_by
   = f.hidden_field :corp_name
   = f.hidden_field :alliance_name

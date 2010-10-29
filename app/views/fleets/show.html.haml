@@ -10,10 +10,11 @@
   = render 'reports'
   = render 'recon'
   = render 'pilots'
-  %ul.navigation
-    %li= link_to "Refresh", ""
-    - if @user && @user.in_fleet?(@fleet)
-      %li= link_to 'Leave Fleet', leave_path
-    - else
-      %li= link_to 'Join Fleet', join_url(:id => @fleet)
-    %li= link_to 'Back', fleets_path
+%ul.navigation
+  %li= link_to "Refresh", ""
+  - if @current_user && @current_user.in_fleet?(@fleet)
+    %li= link_to 'Leave Fleet', leave_path
+  - else
+    %li= link_to 'Join Fleet', join_url(:id => @fleet)
+  %li= link_to 'Delete Fleet', @fleet, :confirm => "Are you sure?", :method => :delete if @fleet.admin?(@current_user)
+  %li= link_to 'Fleets', fleets_path

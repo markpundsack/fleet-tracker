@@ -32,7 +32,7 @@ gem 'jquery-rails'
 #   gem 'webrat'
 # end
 group :deveopment do
-#  gem 'ruby-debug19'
+  gem 'ruby-debug19'
   gem 'annotate'
   gem 'haml-rails'
 end

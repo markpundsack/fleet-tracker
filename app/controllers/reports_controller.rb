@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   before_filter :update_current_user
-  before_filter :igb?, :only => [:create]
+  before_filter :using_igb, :only => [:create]  
+  before_filter :admin_user, :except => [:create]
 
   # GET /fleet/:fleet_id/reports
   # GET /fleet/:fleet_id/reports.xml
@@ -55,8 +56,8 @@ class ReportsController < ApplicationController
     # @report = @fleet.reports.create(params[:report])
     @report = @fleet.reports.
                 find_or_create_by_fleet_id_and_solar_system_name(@fleet.id, 
-                                                                 @user.solar_system_name)
-    @report.char_name = @user.char_name
+                                                                 @current_user.solar_system_name)
+    @report.char_name = @current_user.char_name
     @report.reds = params[:report][:reds] if params[:report][:reds]
     @report.neutrals = params[:report][:neutrals] if params[:report][:neutrals]
 

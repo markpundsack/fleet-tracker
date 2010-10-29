@@ -2,3 +2,6 @@
 - unless @users.empty?
   %table.section.pilots#pilots
     = render @Users
+%ul.navigation
+  %li= link_to 'Back', fleet_path(@fleet)
+  %li= link_to 'Fleets', fleets_path
