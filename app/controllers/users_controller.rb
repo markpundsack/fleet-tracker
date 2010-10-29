@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :update_current_user
+  before_filter :update_current_user, :except => [:ping]
+  before_filter :admin_user, :except => [:ping, :purge, :show]
 
   # GET /ping.html
   # GET /ping.js
@@ -37,10 +38,15 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
+    
+    if (@current_user && @current_user.global_admin?) || (@user.fleet && @user.fleet.admin?(@current_user) || @user == @current_user)
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @user }
+      end
+    else
+      flash[:error] = "You are not authorized to view this user."
+      redirect_to root_path
     end
   end
 
@@ -106,4 +112,13 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+  def fleet_admin
+    unless global_admin? || (@user.fleet && @user.fleet.admin?(@current_user))
+      flash[:error] = "You are not authorized."
+      redirect_to root_path
+    end
+  end
+  
 end

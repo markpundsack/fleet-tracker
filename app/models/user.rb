@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  char_name          :string(255)
+#  corp_name          :string(255)
+#  alliance_name      :string(255)
+#  station_name       :string(255)
+#  solar_system_name  :string(255)
+#  constellation_name :string(255)
+#  region_name        :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  fleet_id           :integer
+#  changed_at         :datetime
+#
+
 class User < ActiveRecord::Base
   validates_presence_of :char_name, :corp_name
   
@@ -68,24 +86,8 @@ class User < ActiveRecord::Base
     self.changed_at = Time.now if self.solar_system_name_changed?
   end
   
+  def global_admin?
+    return true if (GlobalAdmin.find_by_char_name(self.char_name))
+  end
+  
 end
-
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id                 :integer         not null, primary key
-#  char_name          :string(255)
-#  corp_name          :string(255)
-#  alliance_name      :string(255)
-#  station_name       :string(255)
-#  solar_system_name  :string(255)
-#  constellation_name :string(255)
-#  region_name        :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  fleet_id           :integer
-#  changed_at         :datetime
-#
-

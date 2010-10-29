@@ -1,5 +1,6 @@
 GEM
   remote: http://rubygems.org/
+  remote: http://gems.github.com/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.0)
@@ -29,9 +30,11 @@ GEM
       activesupport (= 3.0.0)
     activesupport (3.0.0)
     annotate (2.4.0)
+    archive-tar-minitar (0.5.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    columnize (0.3.1)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.0.18)
@@ -40,9 +43,12 @@ GEM
       activesupport (~> 3.0.0)
       haml (~> 3.0.18)
       railties (~> 3.0.0)
+    hashtrain-acts_as_random_id (1.1.0)
     i18n (0.4.1)
     jquery-rails (0.2.2)
       rails (~> 3.0)
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
     mail (2.2.5)
       activesupport (>= 2.3.6)
       mime-types
@@ -68,6 +74,16 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     sqlite3-ruby (1.2.5)
     thor (0.14.0)
     treetop (1.4.8)
@@ -81,6 +97,8 @@ DEPENDENCIES
   annotate
   haml
   haml-rails
+  hashtrain-acts_as_random_id
   jquery-rails
   rails (= 3.0.0)
+  ruby-debug19
   sqlite3-ruby

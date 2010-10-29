@@ -4,5 +4,7 @@
   %br/
   FC: #{@fleet.fc}<br/>
   XO: #{@fleet.xo}<br/>
-  Open to: #{@fleet.scope_to_s}<br/>
-  #{link_to 'Edit', edit_fleet_path(@fleet)}
+  Visible to: #{@fleet.scope_to_s}<br/>
+  Direct access: #{@fleet.direct_access}<br/>
+  - if @fleet.admin?(@current_user)
+    #{link_to 'Edit', edit_fleet_path(@fleet)} 

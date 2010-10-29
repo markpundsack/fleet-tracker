@@ -25,6 +25,12 @@ body {
   float: left;
 }
 
+img.beta {
+	position: relative;
+	top: -35px;
+	align: top;
+}
+
 #content {
   margin-top: 1em;
   font-size: 120%;
@@ -49,7 +55,7 @@ a, .link {
 /* Navigation */
 .right {
   float: right;
-  background-color: $foreground-color;
+#  background-color: $foreground-color;
 }
 
 .navigation {
@@ -314,4 +320,9 @@ form.new_micropost {
 form.new_micropost textarea {
   height: 4em;
   margin-bottom: 0;
+}
+
+.not_available {
+	font-style: italic;
+	padding-bottom: 1em;
 }

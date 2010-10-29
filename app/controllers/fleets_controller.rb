@@ -1,11 +1,11 @@
 class FleetsController < ApplicationController
   before_filter :update_current_user
-  before_filter :igb?, :only => [:index, :join, :leave, :new, :create]
+  before_filter :using_igb, :only => [:index, :join, :leave, :new, :create]
   
   # GET /fleets
   # GET /fleets.xml
   def index
-    @fleets = Fleet.visible(@user)
+    @fleets = ((@current_user && @current_user.global_admin?) ? Fleet.all : Fleet.visible(@current_user))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,19 +23,25 @@ class FleetsController < ApplicationController
   # GET /fleets/1.xml
   # GET /fleets/1.js
   def show
-    @fleet = Fleet.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @fleet }
-      format.js
+    if (Fleet.exists?(params[:id]))
+      @fleet = Fleet.find(params[:id])
+      if @fleet.direct_access || @fleet.visible_to?(@current_user)
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @fleet }
+          format.js
+        end
+        return
+      end
     end
+    flash[:notice] = "You hacker!"
+    redirect_to root_path
   end
 
   # GET /fleets/1/join
   def join
     @fleet = Fleet.find(params[:id])
-    if @user.join_fleet(@fleet)
+    if @current_user.join_fleet(@fleet)
       flash[:notice] = "Fleet joined"
       redirect_to @fleet
     else
@@ -46,7 +52,7 @@ class FleetsController < ApplicationController
 
   # GET /fleets/leave
   def leave
-    if @user.leave_fleet
+    if @current_user.leave_fleet
       flash[:notice] = "Fleet cleared"
       redirect_to root_path
     else
@@ -58,7 +64,7 @@ class FleetsController < ApplicationController
   # GET /fleets/new
   # GET /fleets/new.xml
   def new
-    @fleet = Fleet.new_from_user(@user)
+    @fleet = Fleet.new_from_user(@current_user)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -78,8 +84,8 @@ class FleetsController < ApplicationController
 
     respond_to do |format|
       if @fleet.save
-        @user.fleet = @fleet # auto join after creation
-        @user.save
+        @current_user.fleet = @fleet # auto join after creation
+        @current_user.save
         format.html { redirect_to(@fleet, :notice => 'Fleet was successfully created.') }
         format.xml  { render :xml => @fleet, :status => :created, :location => @fleet }
       else

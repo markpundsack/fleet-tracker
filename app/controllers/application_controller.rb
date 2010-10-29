@@ -12,19 +12,26 @@ class ApplicationController < ActionController::Base
       end
     end
     if cookies[:current_user_id]
-      @user = User.find(cookies[:current_user_id])
-      @user.updated_at = Time.now
-      @user.save
+      @current_user = User.find(cookies[:current_user_id])
+      @current_user.updated_at = Time.now
+      @current_user.save
     else
-      @user = User.new_or_update_from_env_and_save(request.env)
+      @current_user = User.new_or_update_from_env_and_save(request.env)
     end
   end
   
-  def igb?
-    unless @user
+  def using_igb
+    unless @current_user
       flash.now[:error] = "IGB and Trusted Site Required"
       flash.now[:notice] = "You must be using the Eve in-game-browser and mark the site as 'trusted' to list or create fleets. If you're already in a fleet, you can copy the direct fleet URL while in-game to your out of game browser."
       render :template => 'pages/about'
+    end
+  end
+  
+  def admin_user
+    unless @current_user && @current_user.global_admin? 
+      flash[:error] = "You must be an administrator to perform that action."
+      redirect_to root_path 
     end
   end
   

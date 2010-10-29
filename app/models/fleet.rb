@@ -14,9 +14,11 @@
 #  created_by          :string(255)
 #  corp_name           :string(255)
 #  alliance_name       :string(255)
+#  direct_access       :boolean
 #
 
 class Fleet < ActiveRecord::Base
+  acts_as_random_id
   validates_presence_of :title, :scope
   
   has_many :users
@@ -27,7 +29,8 @@ class Fleet < ActiveRecord::Base
   def self.new_from_user(user)
     fleet = new(:display_pilot_count => true, 
                 :display_fc_info => true,
-                :scope => 2) #alliance
+                :scope => 2,
+                :direct_access => true) #alliance
     if user
       fleet.title = "#{user.char_name}'s Fleet"
       fleet.fc = user.char_name
@@ -35,12 +38,16 @@ class Fleet < ActiveRecord::Base
       fleet.created_by = user.char_name
       fleet.corp_name = user.corp_name
       fleet.alliance_name = user.alliance_name
+      if fleet.alliance_name.blank?
+        fleet.scope = 1 # use corp instead of alliance
+      end
     end
     return fleet
   end
   
   def self.visible(user)
-    where("scope = 3 or (scope = 2 and alliance_name = '#{user.alliance_name}') or (scope = 1 and corp_name = '#{user.corp_name}')")
+    where("scope = 3 or (scope = 2 and alliance_name = ?) or (scope = 1 and corp_name = ?) or created_by = ? or fc = ? or xo = ? or id = ?", 
+          user.alliance_name, user.corp_name, user.char_name, user.char_name, user.char_name, user.fleet_id)
   end  
 
   def summarize
@@ -60,7 +67,7 @@ class Fleet < ActiveRecord::Base
   end
   
   def scope_to_s
-    map = ["Private", "Corp", "Alliance", "Open"]
+    map = ["Private", "Corp", "Alliance", "Anyone"]
     return map[scope]
   end
   
@@ -71,6 +78,30 @@ class Fleet < ActiveRecord::Base
   def user_changes_since?(after = 0)
     self.users.where("changed_at > ?", Time.at(after.to_i + 1)).count > 0
   end
-
+  
+  def admin?(user)
+    return false if user.nil?
+    return true if user.global_admin?
+    case user.char_name
+    when self.fc, self.xo, self.created_by
+      return true
+    else
+      return false
+    end
+  end
+  
+  def visible_to?(user)
+    return false if user.nil?
+    return true if self.admin?(user)
+    return true if user.fleet == self
+    case self.scope
+    when 3
+      return true
+    when 2
+      return self.alliance_name == user.alliance_name
+    when 1
+      return self.corp_name == user.corp_name
+    end
+  end
+  
 end
-

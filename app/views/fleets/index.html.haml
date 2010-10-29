@@ -1,25 +1,32 @@
-%table.fleets
-  - @fleets.each do |fleet|
-    %tr[fleet]
-      - pilot_count = fleet.users.count
-      %td= link_to fleet.title, fleet
-      %td= link_to 'View', fleet
-      - if @user.in_fleet?(fleet)
-        %td= link_to 'Leave', leave_path
-      - else
-        %td= link_to 'Join', join_url(:id => fleet.id)
-      %td= pluralize(pilot_count,"pilot") if fleet.display_pilot_count
-      %td
-        = "FC: #{fleet.fc}" if fleet.display_fc_info && !fleet.fc.blank?
-        - unless fleet.fc.blank? || fleet.xo.blank?
-          %br/ 
-        = "XO: #{fleet.xo}" if (fleet.display_fc_info && !fleet.xo.blank?)
-      %td
-        %small
-          = "Created by #{fleet.created_by}"
-          <br/>
-          = "#{time_ago_in_words(fleet.created_at)} ago"
-      / %td= link_to 'Edit', edit_fleet_path(fleet)
-      / %td= link_to 'Destroy', fleet, :confirm => 'Are you sure?', :method => :delete
-%br/
+- if @fleets.empty?
+  .not_available No fleets available to you
+- else  
+  %table.fleets
+    - @fleets.each do |fleet|
+      %tr[fleet]
+        - pilot_count = fleet.users.count
+        %td= link_to fleet.title, fleet
+        %td
+          = link_to 'View', fleet
+          %br/
+          = link_to 'Edit', edit_fleet_path(fleet) if fleet.admin?(@current_user)
+        %td  
+          - if @current_user.in_fleet?(fleet)
+            = link_to 'Leave', leave_path
+          - else
+            = link_to 'Join', join_url(:id => fleet.id)
+          %br/
+          - if fleet.admin?(@current_user)
+            = link_to 'Delete', fleet, :confirm => 'Are you sure?', :method => :delete
+        %td= pluralize(pilot_count,"pilot") if fleet.display_pilot_count
+        %td
+          = "FC: #{fleet.fc}" if fleet.display_fc_info && !fleet.fc.blank?
+          - unless fleet.fc.blank? || fleet.xo.blank?
+            %br/ 
+          = "XO: #{fleet.xo}" if (fleet.display_fc_info && !fleet.xo.blank?)
+        %td
+          %small
+            = "Created by #{fleet.created_by}"
+            %br/
+            = "#{time_ago_in_words(fleet.created_at)} ago"
 = link_to 'Create New Fleet', new_fleet_path

@@ -12,9 +12,19 @@
     <div class="container">
       <%= render 'layouts/header' %>
       <div id="content" class="round_box">
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, :class => "flash #{key}") %>
-        <% end %>
+        <%- flash.each do |flash_type, message| -%>
+          <%= content_tag :div, message, :class => "flash #{flash_type}" %>
+          <% content_tag :script, :type => "text/javascript" do %>
+            setTimeout(function() {
+                $('div.flash').fadeTo("slow", 0.01, function() {
+                                                    $(this).slideUp("medium", function() {
+                                                      $(this).remove();
+                                                    });
+                                                  });
+            }, 3000); // <-- time in milliseconds
+            // setTimeout("$$('div.flash').each(function(flash){ flash.hide();})", 10000);
+          <% end %>
+        <%- end -%>
         <%= yield %>
       </div>
       <%= render 'layouts/footer' %>
