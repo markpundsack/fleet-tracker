@@ -90,4 +90,10 @@ class User < ActiveRecord::Base
     return true if (GlobalAdmin.find_by_char_name(self.char_name))
   end
   
+  def self.purge
+    users = Users.where(['updated_at < ?', 10.minutes.ago])
+    users.map(&:leave_fleet)
+    return users
+  end
+  
 end

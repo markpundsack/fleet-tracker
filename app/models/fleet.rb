@@ -90,10 +90,11 @@ class Fleet < ActiveRecord::Base
     end
   end
   
-  def visible_to?(user)
+  def access_by?(user)
     return false if user.nil?
-    return true if self.admin?(user)
+    return true if self.direct_access
     return true if user.fleet == self
+    return true if self.admin?(user)
     case self.scope
     when 3
       return true
@@ -101,6 +102,22 @@ class Fleet < ActiveRecord::Base
       return self.alliance_name == user.alliance_name
     when 1
       return self.corp_name == user.corp_name
+    end
+  end
+  
+  def purge_users
+    users = self.users.where(['updated_at < ?', 10.minutes.ago])
+    users.map(&:leave_fleet)
+    return users
+  end
+  
+  def self.purge
+    # The slow way
+    fleets = Fleet.all
+    fleets.each do |fleet|
+      if fleet.users.is_empty?
+        fleet.delete
+      end
     end
   end
   

@@ -1,6 +1,7 @@
 class FleetsController < ApplicationController
   before_filter :update_current_user
   before_filter :using_igb, :only => [:index, :join, :leave, :new, :create]
+  before_filter :check_fleet_id, :only => [:show, :join, :purge, :edit, :update, :destroy]
   
   # GET /fleets
   # GET /fleets.xml
@@ -15,49 +16,40 @@ class FleetsController < ApplicationController
 
   def purge
     @fleet = Fleet.find(params[:id])
-    @users = @fleet.users.where(['updated_at < ?', 10.minutes.ago])
-    @users.map(&:leave_fleet)
+    @users = @fleet.purge_users
   end
   
   # GET /fleets/1
   # GET /fleets/1.xml
   # GET /fleets/1.js
   def show
-    if (Fleet.exists?(params[:id]))
-      @fleet = Fleet.find(params[:id])
-      if @fleet.direct_access || @fleet.visible_to?(@current_user)
-        respond_to do |format|
-          format.html # show.html.erb
-          format.xml  { render :xml => @fleet }
-          format.js
-        end
-        return
-      end
+    @fleet = Fleet.find(params[:id])
+    
+    you_hacker unless @fleet.access_by?(@current_user)
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @fleet }
+      format.js
     end
-    flash[:notice] = "You hacker!"
-    redirect_to root_path
   end
 
   # GET /fleets/1/join
   def join
     @fleet = Fleet.find(params[:id])
     if @current_user.join_fleet(@fleet)
-      flash[:notice] = "Fleet joined"
-      redirect_to @fleet
+      redirect_to @fleet, :notice => "Fleet joined"
     else
-      flash[:error] = "Failed to join fleet"
-      redirect_to root_path
+      redirect_to root_path, :error => "Failed to join fleet"
     end
   end
 
   # GET /fleets/leave
   def leave
     if @current_user.leave_fleet
-      flash[:notice] = "Fleet cleared"
-      redirect_to root_path
+      redirect_to root_path, :notice => "Fleet cleared"
     else
-      flash[:error] = "Failed to leave fleet"
-      redirect_to root_path
+      redirect_to root_path, :error => "Failed to leave fleet"
     end
   end
 
@@ -123,4 +115,14 @@ class FleetsController < ApplicationController
     end
   end
 
+  protected
+  
+  def check_fleet_id
+    you_hacker unless Fleet.exists?(params[:id])
+  end
+  
+  def you_hacker    
+    redirect_to root_path, :notice => "You hacker!"
+  end
+  
 end

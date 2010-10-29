@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     end
   end
   
+  # POST /users/purge
   def purge
     @users = User.abondoned.map(&:destroy)
   end

@@ -19,8 +19,8 @@ FleetTracker::Application.routes.draw do
   match 'igb_required' => 'pages#igb_required'
   match 'about' => 'pages#about'
   match 'ping' => 'users#ping'
-  match 'users/purge' => 'users#purge'
-  match 'fleets/:id/purge' => 'fleets#purge', :as => :fleet_purge
+  match 'users/purge' => 'users#purge', :via => :post
+  match 'fleets/:id/purge' => 'fleets#purge', :as => :fleet_purge, :via => :post
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
