@@ -6,5 +6,5 @@ if @fleet.user_changes_since?(params[:after])
   end
   page["ul.section.summary#summary"].html(inner)
 end
-page[".reports"].html(render @fleet.reports) if @fleet.new_reports?(params[:after])
+page[".reports"].html(render @fleet.reports) #if @fleet.new_reports?(params[:after])
 page[".pilots"].html(render @fleet.users) if @fleet.user_changes_since?(params[:after])
