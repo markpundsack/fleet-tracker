@@ -24,12 +24,17 @@ class Fleet < ActiveRecord::Base
   has_many :users
   has_many :reports
   
-  scope :open, where(:scope => '3')
+  OPEN = 3
+  ALLIANCE = 2
+  CORP = 2
+  PRIVATE = 1
+  
+  scope :open, where(:scope => OPEN) # Unused currently and overrides existing open method
   
   def self.new_from_user(user)
     fleet = new(:display_pilot_count => true, 
                 :display_fc_info => true,
-                :scope => 2,
+                :scope => ALLIANCE,
                 :direct_access => true) #alliance
     if user
       fleet.title = "#{user.char_name}'s Fleet"
@@ -39,14 +44,14 @@ class Fleet < ActiveRecord::Base
       fleet.corp_name = user.corp_name
       fleet.alliance_name = user.alliance_name
       if fleet.alliance_name.blank?
-        fleet.scope = 1 # use corp instead of alliance
+        fleet.scope = CORP # use corp instead of alliance
       end
     end
     return fleet
   end
   
   def self.visible(user)
-    where("scope = 3 or (scope = 2 and alliance_name = ?) or (scope = 1 and corp_name = ?) or created_by = ? or fc = ? or xo = ? or id = ?", 
+    where("scope = #{OPEN} or (scope = #{ALLIANCE} and alliance_name = ?) or (scope = #{CORP} and corp_name = ?) or created_by = ? or fc = ? or xo = ? or id = ?", 
           user.alliance_name, user.corp_name, user.char_name, user.char_name, user.char_name, user.fleet_id)
   end  
 
@@ -96,29 +101,30 @@ class Fleet < ActiveRecord::Base
     return true if user.fleet == self
     return true if self.admin?(user)
     case self.scope
-    when 3
+    when OPEN
       return true
-    when 2
+    when ALLIANCE
       return self.alliance_name == user.alliance_name
-    when 1
+    when CORP
       return self.corp_name == user.corp_name
     end
   end
   
   def purge_users
-    users = self.users.where(['updated_at < ?', 10.minutes.ago])
+    users = self.users.abandoned
     users.map(&:leave_fleet)
     return users
   end
   
+  scope :empty, lambda {
+    select("fleets.*,count(users.id) as users_count").
+    joins("LEFT JOIN users ON fleets.id = users.fleet_id").
+    group("fleets.id").
+    having("users_count=0")
+  }
+  
   def self.purge
-    # The slow way
-    fleets = Fleet.all
-    fleets.each do |fleet|
-      if fleet.users.is_empty?
-        fleet.delete
-      end
-    end
+    Fleet.empty.map(&:delete)
   end
   
 end

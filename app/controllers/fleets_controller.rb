@@ -2,6 +2,7 @@ class FleetsController < ApplicationController
   before_filter :update_current_user
   before_filter :using_igb, :only => [:index, :join, :leave, :new, :create]
   before_filter :check_fleet_id, :only => [:show, :join, :purge, :edit, :update, :destroy]
+  before_filter :purge_fleets, :only => [:show, :index]
   
   # GET /fleets
   # GET /fleets.xml
@@ -123,6 +124,11 @@ class FleetsController < ApplicationController
   
   def you_hacker    
     redirect_to root_path, :notice => "You hacker!"
+  end
+  
+  def purge_fleets
+    User.purge
+    Fleet.purge
   end
   
 end

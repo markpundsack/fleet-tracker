@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
 
   default_scope :order => 'char_name'
   
+  STALE = 1
+  ABANDONED = 10
+  PURGE = 20
+  
   def in_fleet?(fleet)
     fleet_id == fleet.id
   end
@@ -74,12 +78,25 @@ class User < ActiveRecord::Base
     return user
   end
   
+  scope :stale, lambda {
+    where("fleet_id <> NULL updated_at < ?", STALE.minutes.ago)
+  }
+
   def stale?
-    updated_at < 1.minute.ago
+    updated_at < STALE.minute.ago
   end
   
+  scope :abandoned, lambda {
+    where("fleet_id <> NULL updated_at < ?", ABANDONED.minutes.ago)
+  }
+
+  # overaggressive - finds users not in a fleet
+  scope :to_be_purged, lambda {
+    where("fleet_id <> NULL and updated_at < ?", PURGE.minutes.ago)
+  }
+
   def abandoned?
-    updated_at < 10.minutes.ago
+    updated_at < ABANDONED.minutes.ago
   end
   
   def check_for_changes
@@ -91,7 +108,7 @@ class User < ActiveRecord::Base
   end
   
   def self.purge
-    users = Users.where(['updated_at < ?', 10.minutes.ago])
+    users = User.to_be_purged
     users.map(&:leave_fleet)
     return users
   end
