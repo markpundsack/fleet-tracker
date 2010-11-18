@@ -10,7 +10,7 @@ $(function() {
 		}, 3000); // <-- time in milliseconds
 	// setTimeout("$$('div.flash').each(function(flash){ flash.hide();})", 10000);
   //hover states on the static widgets
-  $('.tag_link').hover(
+  $('.tag_link, .action').hover(
                                    function() { $(this).addClass('ui-state-hover'); },
                                    function() { $(this).removeClass('ui-state-hover'); }
           );

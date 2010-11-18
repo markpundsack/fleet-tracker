@@ -234,7 +234,7 @@ table.microposts tr td.micropost span.timestamp {
   color: #666; }
 
 div.user_info img {
-  padding_right: 0.1em; }
+  padding-right: 0.1em; }
 
 div.user_info a {
   text-decoration: none; }
@@ -256,18 +256,18 @@ form.new_micropost textarea {
   font-style: italic;
   padding-bottom: 1em; }
 
-.tag_link {
+.action, .tag_label, .tag_link {
   font-size: 80%; }
 
-.tag_link {
+.action, .tag_label, .tag_link {
   padding: .2em 1em .2em 1em;
   text-decoration: none;
   position: relative; }
 
-.hover .tag_link {
+.hover .tag_link, .hover .action {
   padding-right: 1.5em; }
 
-.tag_link .ui-icon {
+.action .ui-icon, .tag_link .ui-icon {
   margin: 0 0 0 5px;
   position: absolute;
   right: .2em;
