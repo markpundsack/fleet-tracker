@@ -1,29 +1,8 @@
 class UsersController < ApplicationController
   before_filter :update_current_user, :except => [:ping]
   before_filter :admin_user, :except => [:ping, :purge, :show]
+  # TODO Check or valid user ID
 
-  # GET /ping.html
-  # GET /ping.js
-  def ping
-    if cookies[:current_user_id]
-      @user = User.find(cookies[:current_user_id])
-    else
-      @user = User.new_or_update_from_env(request.env)
-    end
-    @current_user_changed = @user.changed?
-    @user.updated_at = Time.now # To force an update
-    @user.save
-    respond_to do |format|
-      format.html { render @curent_user_changed ? 'ping_unchanged' : 'ping' }
-      format.js
-    end
-  end
-  
-  # POST /users/purge
-  def purge
-    @users = User.abondoned.map(&:destroy)
-  end
-  
   # GET /users
   # GET /users.xml
   def index
@@ -114,6 +93,28 @@ class UsersController < ApplicationController
     end
   end
   
+  # GET /ping.html
+  # GET /ping.js
+  def ping
+    if cookies[:current_user_id]
+      @user = User.find(cookies[:current_user_id])
+    else
+      @user = User.new_or_update_from_env(request.env)
+    end
+    @current_user_changed = @user.changed?
+    @user.updated_at = Time.now # To force an update
+    @user.save
+    respond_to do |format|
+      format.html { render @curent_user_changed ? 'ping_unchanged' : 'ping' }
+      format.js
+    end
+  end
+  
+  # POST /users/purge
+  def purge
+    @users = User.abondoned.map(&:destroy)
+  end
+
   protected
   def fleet_admin
     unless global_admin? || (@user.fleet && @user.fleet.admin?(@current_user))

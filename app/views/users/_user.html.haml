@@ -1,5 +1,15 @@
 %tr[user]{ user.stale? ? {:class => "stale"} : {}, user.abandoned? ? {:class => "abandoned"} : {}}
-  %td.pilot= link_to user.char_name, user
-  %td.corp= user.corp_name
-  %td.alliance= user.alliance_name
-  %td.system= user.solar_system_name + (user.stale? ? "*" : "")
+  %td.pilot.span-3= link_to user.char_name, user
+  - if user.tag
+    %td.tag.span-3
+      = link_to(user.tag.text.html_safe + content_tag(:span, "", :class=>"ui-icon ui-icon-close"), remove_tag_path(user), :method => :delete, :class=>"tag_link ui-state-default ui-corner-all")
+  - else
+    %td.tag.span-3= "&nbsp;".html_safe + link_to("Add tag".html_safe + content_tag(:span, "",
+:class=>"ui-icon ui-icon-plus"),
+    add_tag_path(user),
+    :title => "Add Tag to #{user.char_name}", :class => "popup tag_link action ui-state-default ui-corner-all")
+  %td.corp.span-3= user.corp_name
+  %td.alliance.span-3= user.alliance_name
+  %td.system.span-3
+    = user.solar_system_name
+    = (user.stale? ? link_to("*", "#", :title => "User has not updated their location in over a minute") : "")

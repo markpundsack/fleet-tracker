@@ -19,6 +19,7 @@ two:
   region_name: MyString
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -35,5 +36,6 @@ two:
 #  updated_at         :datetime
 #  fleet_id           :integer
 #  changed_at         :datetime
+#  tag_id             :integer
 #
 

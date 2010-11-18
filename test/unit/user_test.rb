@@ -8,6 +8,7 @@ class UserTest < ActiveSupport::TestCase
 end
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -24,5 +25,6 @@ end
 #  updated_at         :datetime
 #  fleet_id           :integer
 #  changed_at         :datetime
+#  tag_id             :integer
 #
 

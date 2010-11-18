@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: users
@@ -14,20 +15,48 @@
 #  updated_at         :datetime
 #  fleet_id           :integer
 #  changed_at         :datetime
+#  tag_id             :integer
 #
 
 class User < ActiveRecord::Base
+  STALE = 1
+  ABANDONED = 10
+  PURGE = 20
+  
   validates_presence_of :char_name, :corp_name
   
   before_save :check_for_changes
   
   belongs_to :fleet
+  belongs_to :tag
 
   default_scope :order => 'char_name'
   
-  STALE = 1
-  ABANDONED = 10
-  PURGE = 20
+  scope :abandoned, lambda {
+    where("fleet_id IS NOT NULL and updated_at < ?", ABANDONED.minutes.ago)
+  }
+
+  scope :stale, lambda {
+    where("fleet_id IS NOT NULL and updated_at < ?", STALE.minutes.ago)
+  }
+
+  scope :to_be_purged, lambda {
+    where("fleet_id IS NOT NULL and updated_at < ?", PURGE.minutes.ago)
+  }
+  
+  scope :tagged, where("tag_id IS NOT NULL")
+
+  def tag=(tag)
+    # TODO Should check if tag is actually changed
+    # increments even if user is not saved
+    if tag
+      self.tag_id = tag.id
+      tag.increment!(:usage_count)
+    else
+      self.tag_id = nil
+    end
+    return tag
+  end
   
   def in_fleet?(fleet)
     fleet_id == fleet.id
@@ -35,11 +64,13 @@ class User < ActiveRecord::Base
   
   def join_fleet(fleet)
     self.fleet = fleet
+    self.tag = nil # Shouldn't be necessary
     save
   end
   
   def leave_fleet
     self.fleet = nil
+    self.tag = nil
     save
   end
 
@@ -78,23 +109,10 @@ class User < ActiveRecord::Base
     return user
   end
   
-  scope :stale, lambda {
-    where("fleet_id <> NULL updated_at < ?", STALE.minutes.ago)
-  }
-
   def stale?
     updated_at < STALE.minute.ago
   end
   
-  scope :abandoned, lambda {
-    where("fleet_id <> NULL updated_at < ?", ABANDONED.minutes.ago)
-  }
-
-  # overaggressive - finds users not in a fleet
-  scope :to_be_purged, lambda {
-    where("fleet_id <> NULL and updated_at < ?", PURGE.minutes.ago)
-  }
-
   def abandoned?
     updated_at < ABANDONED.minutes.ago
   end

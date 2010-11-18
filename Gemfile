@@ -26,6 +26,7 @@ gem 'haml'
 #gem 'eve'
 gem 'jquery-rails'
 gem 'hashtrain-acts_as_random_id', :require => 'acts_as_random_id'
+gem 'rails3-jquery-autocomplete'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -34,7 +35,7 @@ gem 'hashtrain-acts_as_random_id', :require => 'acts_as_random_id'
 #   gem 'webrat'
 # end
 group :deveopment do
-#  gem 'ruby-debug19'
+  gem 'ruby-debug19'
   gem 'annotate'
   gem 'haml-rails'
 end

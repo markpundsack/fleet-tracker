@@ -21,6 +21,12 @@ FleetTracker::Application.routes.draw do
   match 'ping' => 'users#ping'
   match 'users/purge' => 'users#purge', :via => :post
   match 'fleets/:id/purge' => 'fleets#purge', :as => :fleet_purge, :via => :post
+  match 'users/:id/tag' => 'tags#create_tag', :as => :create_tag, :via => :post
+  match 'users/:id/tag' => 'tags#remove_tag', :as => :remove_tag, :via => :delete
+  match 'users/:id/tag' => 'tags#add_tag', :as => :add_tag
+  resources :tags do
+    get :autocomplete_tag_text, :on => :collection
+  end
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

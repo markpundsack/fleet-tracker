@@ -323,6 +323,40 @@ form.new_micropost textarea {
 }
 
 .not_available {
-	font-style: italic;
-	padding-bottom: 1em;
+  font-style: italic;
+  padding-bottom: 1em;
+}
+
+.tag_link {
+  font-size: 80%;
+}
+.tag_link {
+  padding: .2em 1em .2em 1em;
+  text-decoration: none;
+  position: relative;
+}
+
+.hover .tag_link {
+  padding-right: 1.5em;
+}
+
+.tag_link .ui-icon {
+  margin: 0 0 0 5px;
+  position: absolute;
+  right: .2em;
+  top: 50%;
+  margin-top: -8px;
+  display: none;
+}
+
+.hover .ui-icon {
+  display: inline;
+}
+
+.action {
+  display: none;
+}
+
+.hover .action {
+  display: inline;
 }
