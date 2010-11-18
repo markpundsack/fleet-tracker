@@ -1,5 +1,3 @@
-.navigation.right.small
-  = link_to "Purge", fleet_purge_path(@fleet), :method => :post, :title => "Removes pilots that haven't updated their position recently either because they closed the browser or they disconnected" if @fleet.admin?(@current_user)
 = section "Pilots"
 - unless @fleet.users.empty?
   %table.section.pilots#pilots

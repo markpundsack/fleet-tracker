@@ -1,0 +1,12 @@
+= form_for(@tag, :url => create_tag_url(@user), :method => :post) do |f|
+  - if @tag.errors.any?
+    #error_explanation
+      %h3= "#{pluralize(@tag.errors.count, "error")} prohibited this tag from being saved:"
+      %ul
+        - @tag.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    /= f.text_field :text, :placeholder => "e.g. Skirmisher, Scout +2, Squad 1", :size => 40
+    = f.autocomplete_field :text, autocomplete_tag_text_tags_path, :placeholder => "e.g. Skirmisher, Scout +2, Squad 1", :size => 30
+  .actions
+    = f.submit "OK"

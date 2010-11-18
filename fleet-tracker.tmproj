@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/fleets/_pilots.html.haml</string>
+	<string>app/views/users/_user.html.haml</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,118 +21,133 @@
 	<integer>271</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/views/fleets/_form.html.haml</key>
+		<key>app/controllers/fleets_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/fleets/_pilots.html.haml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
 				<integer>2</integer>
+				<key>line</key>
+				<integer>132</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/fleets/show.html.haml</key>
+		<key>app/controllers/tags_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>43</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>24</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/_stylesheets.html.erb</key>
+		<key>app/models/user.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>43</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>66</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>50</integer>
+		</dict>
+		<key>app/views/tags/_form.html.haml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>132</integer>
+				<key>line</key>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/application.html.erb</key>
+		<key>app/views/users/_user.html.haml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>40</integer>
+				<integer>92</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>public/stylesheets/blueprint/screen.css</key>
+		<key>config/routes.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>197</integer>
+				<integer>26</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>36</integer>
+			<integer>0</integer>
+		</dict>
+		<key>public/javascripts/application.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>45</integer>
 		</dict>
 		<key>public/stylesheets/sass/custom.scss</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>139</integer>
+				<integer>335</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>102</integer>
+			<integer>297</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/views/fleets/_form.html.haml</string>
-		<string>app/views/layouts/application.html.erb</string>
-		<string>app/views/layouts/_stylesheets.html.erb</string>
-		<string>app/views/fleets/show.html.haml</string>
-		<string>app/views/fleets/_pilots.html.haml</string>
-		<string>public/stylesheets/blueprint/screen.css</string>
+		<string>config/routes.rb</string>
+		<string>app/controllers/fleets_controller.rb</string>
+		<string>app/views/tags/_form.html.haml</string>
+		<string>app/models/user.rb</string>
+		<string>app/views/users/_user.html.haml</string>
+		<string>public/javascripts/application.js</string>
+		<string>app/controllers/tags_controller.rb</string>
 		<string>public/stylesheets/sass/custom.scss</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{437, 272}, {1140, 795}}</string>
+	<string>{{36, 157}, {893, 764}}</string>
 </dict>
 </plist>
