@@ -2739,42 +2739,42 @@ tr.fleet {
   font-weight: bold;
 }
 
-/* line 150, ../../../app/stylesheets/screen.scss */
+/* line 151, ../../../app/stylesheets/screen.scss */
 .section#details {
   display: none;
 }
 
-/* line 154, ../../../app/stylesheets/screen.scss */
+/* line 155, ../../../app/stylesheets/screen.scss */
 .hidden {
   display: none;
 }
 
-/* line 158, ../../../app/stylesheets/screen.scss */
+/* line 159, ../../../app/stylesheets/screen.scss */
 .float {
   float: right;
 }
 
-/* line 162, ../../../app/stylesheets/screen.scss */
+/* line 163, ../../../app/stylesheets/screen.scss */
 #route {
   margin-bottom: 1em;
 }
 
-/* line 166, ../../../app/stylesheets/screen.scss */
+/* line 167, ../../../app/stylesheets/screen.scss */
 h3.fleet {
   margin-bottom: 0px;
 }
 
-/* line 170, ../../../app/stylesheets/screen.scss */
+/* line 171, ../../../app/stylesheets/screen.scss */
 .stale {
   font-style: italic;
 }
 
-/* line 174, ../../../app/stylesheets/screen.scss */
+/* line 175, ../../../app/stylesheets/screen.scss */
 .abandoned {
   text-decoration: line-through;
 }
 
-/* line 178, ../../../app/stylesheets/screen.scss */
+/* line 179, ../../../app/stylesheets/screen.scss */
 #footer {
   text-align: center;
   margin-top: 10px;
@@ -2782,29 +2782,29 @@ h3.fleet {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 184, ../../../app/stylesheets/screen.scss */
+/* line 185, ../../../app/stylesheets/screen.scss */
 #footer .navigation {
   float: none;
 }
 
-/* line 189, ../../../app/stylesheets/screen.scss */
+/* line 190, ../../../app/stylesheets/screen.scss */
 div.field, div.actions {
   margin-bottom: 10px;
 }
 
-/* line 193, ../../../app/stylesheets/screen.scss */
+/* line 194, ../../../app/stylesheets/screen.scss */
 .fieldWithErrors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 199, ../../../app/stylesheets/screen.scss */
+/* line 200, ../../../app/stylesheets/screen.scss */
 .fieldWithErrors label {
   color: #fff;
 }
 
-/* line 203, ../../../app/stylesheets/screen.scss */
+/* line 204, ../../../app/stylesheets/screen.scss */
 #errorExplanation {
   width: 400px;
   border: 2px solid red;
@@ -2814,7 +2814,7 @@ div.field, div.actions {
   background-color: #f0f0f0;
 }
 
-/* line 212, ../../../app/stylesheets/screen.scss */
+/* line 213, ../../../app/stylesheets/screen.scss */
 #errorExplanation h2 {
   text-align: left;
   font-weight: bold;
@@ -2825,33 +2825,33 @@ div.field, div.actions {
   color: #fff;
 }
 
-/* line 222, ../../../app/stylesheets/screen.scss */
+/* line 223, ../../../app/stylesheets/screen.scss */
 #errorExplanation p {
   color: #333;
   margin-bottom: 0;
   padding: 5px;
 }
 
-/* line 228, ../../../app/stylesheets/screen.scss */
+/* line 229, ../../../app/stylesheets/screen.scss */
 #errorExplanation ul li {
   font-size: 12px;
   list-style: square;
 }
 
-/* line 233, ../../../app/stylesheets/screen.scss */
+/* line 234, ../../../app/stylesheets/screen.scss */
 .not_available {
   font-style: italic;
   padding-bottom: 1em;
 }
 
-/* line 238, ../../../app/stylesheets/screen.scss */
+/* line 239, ../../../app/stylesheets/screen.scss */
 .tag_link, .add_tag {
   font-size: 80%;
   padding: .2em 1em .2em 1em;
   text-decoration: none;
   position: relative;
 }
-/* line 245, ../../../app/stylesheets/screen.scss */
+/* line 246, ../../../app/stylesheets/screen.scss */
 .tag_link .icon, .add_tag .icon {
   margin: 0 0 0 5px;
   position: absolute;
@@ -2861,30 +2861,30 @@ div.field, div.actions {
   display: none;
 }
 
-/* line 260, ../../../app/stylesheets/screen.scss */
+/* line 261, ../../../app/stylesheets/screen.scss */
 .add_tag {
   display: none;
 }
 
-/* line 268, ../../../app/stylesheets/screen.scss */
+/* line 269, ../../../app/stylesheets/screen.scss */
 .hover .tag_link, .hover .add_tag {
   padding-right: 1.5em;
 }
-/* line 272, ../../../app/stylesheets/screen.scss */
+/* line 273, ../../../app/stylesheets/screen.scss */
 .hover .add_tag {
   display: inline;
 }
-/* line 275, ../../../app/stylesheets/screen.scss */
+/* line 276, ../../../app/stylesheets/screen.scss */
 .hover .icon {
   display: inline;
 }
 
-/* line 280, ../../../app/stylesheets/screen.scss */
+/* line 281, ../../../app/stylesheets/screen.scss */
 .user {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 281, ../../../app/stylesheets/screen.scss */
+/* line 282, ../../../app/stylesheets/screen.scss */
 .user .pilot, .user .tag, .user .corp, .user .alliance {
   display: inline;
   float: left;
@@ -2898,7 +2898,7 @@ div.field, div.actions {
 * html .user .pilot, * html .user .tag, * html .user .corp, * html .user .alliance {
   overflow-x: hidden;
 }
-/* line 287, ../../../app/stylesheets/screen.scss */
+/* line 288, ../../../app/stylesheets/screen.scss */
 .user .system {
   display: inline;
   float: left;
@@ -2913,7 +2913,7 @@ div.field, div.actions {
   overflow-x: hidden;
 }
 
-/* line 296, ../../../app/stylesheets/screen.scss */
+/* line 297, ../../../app/stylesheets/screen.scss */
 abbr.timeago {
   border-bottom-width: 0;
 }
