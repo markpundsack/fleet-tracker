@@ -1,0 +1,299 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Combine the partials into a single screen stylesheet.
+@import "partials/page";
+@import "partials/form";
+@import "partials/one_col";
+//@import "partials/two_col";
+
+@import "jquery_ui";
+
+body {
+  background: $background-color;
+}
+
+#header {
+  padding-top: 20px;
+  margin-top: 1em;
+	//@include clearfix; // Doesn't work???
+	@extend .ui-helper-clearfix;
+	h1 {
+	  background: $foreground-color;
+	  padding: 20px;
+	  float: left;
+		@extend .round;
+	}
+	.navigation {
+		@extend .round_box;
+		@extend .right;
+	}
+	img.beta {
+		position: relative;
+		top: -35px;
+		align: top;
+	}
+}
+
+#container {
+	@include clearfix;
+}
+
+#content {
+  margin-top: 1em;
+  font-size: 120%;
+  padding: 20px;
+	@extend .round_box;
+}
+
+/* Links */
+// Needs to be under body to override compass defaults
+body {
+	a, .link {
+	 	color: $link-color;
+	 	text-decoration: none;
+	}
+	a:hover, a:focus {
+	  color: $link-hover-color;
+	  text-decoration: none;
+	}
+	a:visited {
+	 	color: $link-color;
+	}
+}
+
+// No idea why this is required. It should be covered by the above treatment
+.pilot, .float {
+	a:hover, a:focus {
+	  color: $link-hover-color;
+	}
+}
+
+/* Navigation */
+.right {
+  float: right;
+}
+.navigation {
+  padding: 0 0.7em;
+  white-space: nowrap;
+	li {
+	  list-style-type: none;
+	  display: inline-block;
+	  padding: 0.2em 0;
+		a {
+		  padding: 0 5px;
+		  font-weight: bold;
+		}
+		a:visited {
+		  color: $link-color;
+		}
+		a:hover {
+		  text-decoration: underline;
+		}
+	}
+}
+
+ul.navigation {
+  margin: 0;
+}
+
+table.fleets {
+  border-spacing: 0px 5px;
+}
+
+tr.fleet {
+  background: $data-color;
+}
+
+.new_report {
+  display: inline;
+}
+
+@mixin round($radius) {
+  -moz-border-radius:		$radius;
+  -webkit-border-radius:	$radius;
+  border-radius:			$radius;
+}
+
+.round {
+  @include round($border-radius);
+}
+
+.round_box {
+	@include round($border-radius);
+  background-color: $foreground-color;	
+}
+
+.section {
+  @include round(5px);
+  background-color: $data-color;
+  padding: 5px;
+  margin: 0 0 5px 0;
+  ul, tr, td {
+    padding: 0 0;
+  }
+  li {
+    list-style-type: none;
+  }
+}
+
+.section-head {
+  font-weight: bold;
+}
+
+// Default until clicked on
+.section#details {
+	display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.float {
+  float: right;
+}
+
+#route {
+  margin-bottom: 1em;
+}
+
+h3.fleet {
+  margin-bottom: 0px;
+}
+
+.stale {
+  font-style: italic;
+}
+
+.abandoned {
+  text-decoration: line-through;
+}
+
+#footer {
+  text-align: center;
+  margin-top: 10px;
+  width: 710px;
+  margin-left: auto;
+  margin-right: auto;
+	.navigation {
+	  float: none;
+	}
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.fieldWithErrors label {
+  color: #fff;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.not_available {
+  font-style: italic;
+  padding-bottom: 1em;
+}
+
+.tag_link, .add_tag {
+  font-size: 80%;
+  padding: .2em 1em .2em 1em;
+  text-decoration: none;
+  position: relative;
+	@extend .ui-state-default;
+	@extend .ui-corner-all;
+	.icon {
+		margin: 0 0 0 5px;
+	  position: absolute;
+	  right: .2em;
+	  top: 50%;
+	  margin-top: -8px;
+	  display: none;
+		@extend .ui-icon;
+	}
+}
+
+.tag_link .icon {
+	@extend .ui-icon-close;
+}
+
+.add_tag {
+  display: none;
+	.icon {
+		@extend .ui-icon-plus;
+	}
+}
+
+.hover {
+	.tag_link, .add_tag {
+	  padding-right: 1.5em;
+		@extend .ui-state-hover;
+	}
+	.add_tag {
+		display: inline;
+	}
+	.icon {
+	  display: inline;
+	}
+}
+
+.user {
+	.pilot, .tag, .corp, .alliance {
+		@include column(4);
+	  padding-bottom: 0;
+	  padding-top: 0;
+	  padding-left: 0;
+	}	
+	.system {
+		@include column(3,true);
+	  padding-bottom: 0;
+	  padding-top: 0;
+	  padding-left: 0;
+	}
+	@include clearfix;
+}
+
+abbr.timeago {
+	border-bottom-width: 0;
+}

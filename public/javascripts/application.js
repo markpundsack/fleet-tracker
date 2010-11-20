@@ -10,15 +10,9 @@ $(function() {
 		}, 3000); // <-- time in milliseconds
 	// setTimeout("$$('div.flash').each(function(flash){ flash.hide();})", 10000);
   //hover states on the static widgets
-  $('.tag_link, .action').hover(
-                                   function() { $(this).addClass('ui-state-hover'); },
-                                   function() { $(this).removeClass('ui-state-hover'); }
-          );
-  $('tr.user').hover(
-                                   function() { $(this).addClass('hover'); },
-                                   function() { $(this).removeClass('hover'); }
-          );
-
+  $('.pilots .user').live({ mouseenter: function() { $(this).addClass('hover'); }, mouseleave: function() {
+  $(this).removeClass('hover'); } });
+	$("abbr.timeago").timeago();
 });
 
 $(function() {
@@ -42,7 +36,7 @@ $(function() {
     }
 
     $.getScript("/fleets/" + fleet_id + ".js?after=" + after);
-    setTimeout(updateFleet, 10000);
+    setTimeout(updateFleet, 20000);
   }
 
   function updateReports () {
@@ -54,7 +48,7 @@ $(function() {
     }
 
     $.getScript("/fleets/" + fleet_id + "/reports.js?after=" + after);
-    setTimeout(updateReports, 10000);
+    setTimeout(updateReports, 20000);
   }
 
   function ping () {

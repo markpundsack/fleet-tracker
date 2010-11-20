@@ -1,1 +1,1 @@
-page["#reports"].html(render @fleet.reports) #if @fleet.new_reports(params[:after])
+page["#reports"].html(render @fleet.reports) if @fleet.new_reports(params[:after])
