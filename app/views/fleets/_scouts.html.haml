@@ -1,8 +1,4 @@
 = section("Scouts, Skirmishers, and Squads, oh my!")
 - style= (@fleet.users.tagged.count == 0 ? "display:none;" : "")
 %ul.section.scouts#scouts(style="#{style}")
-  - @fleet.users.tagged.each do |user|
-    %li= "#{user.tag.text} (#{user.char_name}) in #{user.solar_system_name}"
-    -#    = "+ #{pluralize(count, "other")}" unless first
-  - if @fleet.users.tagged.count == 0
-    %li Tag some pilots to have them show up here
+  = render 'scouts_inner'

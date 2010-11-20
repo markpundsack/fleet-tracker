@@ -1,12 +1,8 @@
-// Variables
-$background-color: lighten(gray, 5%);
-$data-color: lighten(gray, 40%);
-$foreground-color: white;
-$border-radius: 15px;
+@import "jquery_ui";
 
-.container {
-  width: 710px;
-}
+//.container {
+//  width: 710px;
+//}
 
 body {
   background: $background-color;
@@ -44,7 +40,7 @@ a, .link {
   color: #09c;
   text-decoration: none;
   :hover {
-    cover: #069;
+    color: #069;
     text-decoration: none;
   }
   :visited {
@@ -298,7 +294,7 @@ table.microposts tr td.micropost span.timestamp {
 }
 
 div.user_info img {
-  padding_right: 0.1em;
+  padding-right: 0.1em;
 }
 
 div.user_info a {
@@ -325,6 +321,11 @@ form.new_micropost textarea {
 .not_available {
   font-style: italic;
   padding-bottom: 1em;
+}
+
+.tag_link {
+	@extend .ui-state-default;
+	@extend .ui-corner-all;
 }
 
 .tag_link {

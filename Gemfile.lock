@@ -35,6 +35,8 @@ GEM
       activesupport (~> 3.0.0)
     builder (2.1.2)
     columnize (0.3.1)
+    compass (0.10.6)
+      haml (>= 3.0.4)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.0.18)
@@ -98,6 +100,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  compass (>= 0.10.6)
   haml
   haml-rails
   hashtrain-acts_as_random_id

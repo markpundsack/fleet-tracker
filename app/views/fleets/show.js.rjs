@@ -1,5 +1,14 @@
-page[".fleet"].attr("data-time",Time.now.to_i) if @fleet.new_reports?(params[:after]) || @fleet.user_changes_since?(params[:after])
-page[".summary"].html(summarize(@fleet)) if @fleet.user_changes_since?(params[:after])
-page[".pilots"].html(render @fleet.users) if @fleet.user_changes_since?(params[:after])
-page[".reports"].html(render @fleet.reports) #if @fleet.new_reports?(params[:after])
-page[".pilots"].html(render @fleet.users) if @fleet.user_changes_since?(params[:after])
+page[".fleet"].attr("data-time",Time.now.to_i) if @fleet.new_reports?(params[:after]) || @fleet.user_changes_since?(params[:after]) || @fleet.updated_at > Time.at(params[:after].to_i + 1)
+if @fleet.updated_at > Time.at(params[:after].to_i + 1)
+  page["#details"].html(render 'details_inner') 
+  page << "$('#details abbr.timeago').timeago();"
+end
+if @fleet.user_changes_since?(params[:after])
+  page["#summary"].html(summarize(@fleet))
+  page["#scouts"].html(render 'scouts_inner')
+  page["#pilots"].html(render @fleet.users) 
+end
+if @fleet.new_reports?(params[:after])
+  page["#reports"].html(render @fleet.reports) 
+  page << "$('#reports abbr.timeago').timeago();"
+end

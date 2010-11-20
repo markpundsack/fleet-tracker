@@ -118,7 +118,7 @@ class User < ActiveRecord::Base
   end
   
   def check_for_changes
-    self.changed_at = Time.now if self.solar_system_name_changed?
+    self.changed_at = Time.now if self.solar_system_name_changed? || self.tag_id_changed? || self.fleet_id_changed?
   end
   
   def global_admin?
