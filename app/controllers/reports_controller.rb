@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_filter :update_current_user
-  before_filter :using_igb, :only => [:create]  
+  before_filter :require_igb, :only => [:create]  
   before_filter :admin_user, :except => [:create]
 
   # GET /fleet/:fleet_id/reports

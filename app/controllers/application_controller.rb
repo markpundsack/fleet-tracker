@@ -20,10 +20,11 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def using_igb
+  def require_igb
     unless @current_user
       flash.now[:error] = "IGB and Trusted Site Required"
       flash.now[:notice] = "You must be using the Eve in-game-browser and mark the site as 'trusted' to list or create fleets. If you're already in a fleet, you can copy the direct fleet URL while in-game to your out of game browser."
+      @request_trust = true
       render :template => 'pages/about'
     end
   end
