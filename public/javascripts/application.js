@@ -66,7 +66,7 @@ $(document).ready(function() {
     }).load($(this).attr('href') + ' form', function() {
       $form = $(this).find('form')
       $form.find(':text:first').focus();
-      $btn = $form.find(':submit');
+      /*$btn = $form.find(':submit');
       var txt = $btn.val();
       $btn.remove();
       var buttons = {};
@@ -81,8 +81,8 @@ $(document).ready(function() {
             return false;
           }
         });
-      };
-      $(this).dialog('option','buttons', buttons );
+      };*/
+      $(this).dialog('option','buttons'/*, buttons */);
     });
     return false;
   });

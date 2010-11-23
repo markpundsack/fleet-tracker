@@ -29,7 +29,7 @@ class Fleet < ActiveRecord::Base
   CORP = 2
   PRIVATE = 1
   
-  scope :open, where(:scope => OPEN) # Unused currently and overrides existing open method
+  # scope :open, where(:scope => OPEN) # Unused currently and overrides existing open method
   
   def self.new_from_user(user)
     fleet = new(:display_pilot_count => true, 

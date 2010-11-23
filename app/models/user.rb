@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   PURGE = 20
   
   validates_presence_of :char_name, :corp_name
+  validates_uniqueness_of :char_name
   
   before_save :check_for_changes
   

@@ -7,4 +7,9 @@ class PagesController < ApplicationController
   # GET /about
   def about
   end
+  
+  # GET /about
+  def env
+  end
+
 end
