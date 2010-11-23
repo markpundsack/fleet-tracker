@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101105005147) do
+ActiveRecord::Schema.define(:version => 20101123201259) do
 
   create_table "fleets", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20101105005147) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "global_admins", ["char_name"], :name => "index_global_admins_on_char_name", :unique => true
 
   create_table "reports", :force => true do |t|
     t.string   "char_name"
@@ -67,5 +69,7 @@ ActiveRecord::Schema.define(:version => 20101105005147) do
     t.datetime "changed_at"
     t.integer  "tag_id"
   end
+
+  add_index "users", ["char_name"], :name => "index_users_on_char_name", :unique => true
 
 end
