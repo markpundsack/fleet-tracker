@@ -34,8 +34,8 @@ $(function() {
     } else {
       var after = "0";
     }
-
-    $.getScript("/fleets/" + fleet_id + ".js?after=" + after);
+		
+    $.getScript(base_url + "fleets/" + fleet_id + ".js?after=" + after);
     setTimeout(updateFleet, 20000);
   }
 
@@ -47,12 +47,12 @@ $(function() {
       var after = "0";
     }
 
-    $.getScript("/fleets/" + fleet_id + "/reports.js?after=" + after);
+    $.getScript(base_url + "fleets/" + fleet_id + "/reports.js?after=" + after);
     setTimeout(updateReports, 20000);
   }
 
   function ping () {
-    $.getScript("/ping.js");
+    $.getScript(base_url + "ping.js");
     setTimeout(ping, 10000);
   }
 
