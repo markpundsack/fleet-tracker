@@ -40,11 +40,11 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.0.18)
-    haml-rails (0.3.1)
-      actionpack (~> 3.0.0)
-      activesupport (~> 3.0.0)
-      haml (~> 3.0.18)
-      railties (~> 3.0.0)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     hashtrain-acts_as_random_id (1.1.0)
     i18n (0.4.2)
     jquery-rails (0.2.5)
@@ -58,6 +58,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mysql (2.8.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -105,6 +106,7 @@ DEPENDENCIES
   haml-rails
   hashtrain-acts_as_random_id
   jquery-rails
+  mysql
   rails (= 3.0.0)
   rails3-jquery-autocomplete
   ruby-debug19
