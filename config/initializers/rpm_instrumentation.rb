@@ -14,14 +14,12 @@ Fleet.class_eval do
     include NewRelic::Agent::MethodTracer
     add_method_tracer :access_by?
     add_method_tracer :admin?
-    add_method_tracer :purge
     add_method_tracer :summarize
     add_method_tracer :new_reports?
     add_method_tracer :user_changes_since?
 end
 User.class_eval do
     include NewRelic::Agent::MethodTracer
-    add_method_tracer :purge
     add_method_tracer :global_admin?
     add_method_tracer :in_fleet?
 end
