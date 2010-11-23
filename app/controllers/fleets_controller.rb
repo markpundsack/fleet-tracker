@@ -2,7 +2,9 @@ class FleetsController < ApplicationController
   before_filter :update_current_user
   before_filter :require_igb, :only => [:index, :join, :leave, :new, :create]
   before_filter :check_fleet_id, :only => [:show, :join, :purge, :edit, :update, :destroy]
-  before_filter :purge_fleets, :only => [:show, :index]
+  # TODO Consider only purging fleets in index to save database hits, especially since show is called from javascript
+  # TODO Find a way to do this as a background task instead
+  before_filter :purge_fleets, :only => [:index]
   
   # GET /fleets
   # GET /fleets.xml
