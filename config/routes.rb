@@ -18,6 +18,7 @@ FleetTracker::Application.routes.draw do
   match 'fleets/:id/join' => 'fleets#join', :as => :join
   match 'igb_required' => 'pages#igb_required'
   match 'about' => 'pages#about'
+  match 'env' => 'pages#env'
   match 'ping' => 'users#ping'
   match 'users/purge' => 'users#purge', :via => :post
   match 'fleets/:id/purge' => 'fleets#purge', :as => :fleet_purge, :via => :post
