@@ -40,5 +40,5 @@ group :development do
   gem 'haml-rails'
 end
 group :production do
-  gem 'mysql'
+  gem 'ruby-mysql'
 end
