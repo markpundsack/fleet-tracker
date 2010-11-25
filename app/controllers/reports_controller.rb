@@ -68,7 +68,7 @@ class ReportsController < ApplicationController
         format.html { redirect_to(@fleet, :notice => 'Report was successfully created.') }
         format.xml  { render :xml => @report, :status => :created, :location => @report }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(@fleet, :error => 'Error creating report!') }
         format.xml  { render :xml => @report.errors, :status => :unprocessable_entity }
       end
     end
