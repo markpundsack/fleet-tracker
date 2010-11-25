@@ -121,7 +121,7 @@ common: &default_settings
     # which will use the threshold for an dissatisfying Apdex
     # controller action - four times the Apdex T value.
     #transaction_threshold: apdex_f
-    transaction_threshold: 0.5
+    transaction_threshold: apdex_f
  
     # When transaction tracer is on, SQL statements can optionally be
     # recorded. The recorder has three modes, "off" which sends no
@@ -197,7 +197,7 @@ development:
   # 'enabled').
   # NOTE: for initial evaluation purposes, you may want to temporarily 
   # turn the agent on in development mode.
-  monitor_mode: true
+  monitor_mode: false
 
   # Rails Only - when running in Developer Mode, the New Relic Agent will 
   # present performance information on the last 100 transactions you have

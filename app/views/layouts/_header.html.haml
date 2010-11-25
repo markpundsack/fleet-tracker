@@ -1,9 +1,7 @@
 #header
-  /  %h1.round=link_to "Eve Ranch Fleet Tracker", root_path
   %h1= link_to (image_tag('FleetTracker.png', :alt => "Fleet Tracker") + image_tag("beta.jpeg", :class => "beta", :alt => "Beta", :title => "Fleet Tracker is free while in beta!")), root_path
   %ul.navigation
     %li=link_to "Fleets", root_path
-    / %li=link_to "Sign Up", "#"
     %li=link_to "About", about_path
-  - unless @current_user.blank?
-    #ping
+  - if @current_user && @current_user.fleet
+    #ping(data-refresh="#{30*1000}" data-base-url="#{root_url}")

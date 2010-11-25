@@ -16,12 +16,9 @@ FleetTracker::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
   match 'fleets/:id/join' => 'fleets#join', :as => :join
-  match 'igb_required' => 'pages#igb_required'
   match 'about' => 'pages#about'
   match 'env' => 'pages#env'
   match 'ping' => 'users#ping'
-  match 'users/purge' => 'users#purge', :via => :post
-  match 'fleets/:id/purge' => 'fleets#purge', :as => :fleet_purge, :via => :post
   match 'users/:id/tag' => 'tags#create_tag', :as => :create_tag, :via => :post
   match 'users/:id/tag' => 'tags#remove_tag', :as => :remove_tag, :via => :delete
   match 'users/:id/tag' => 'tags#add_tag', :as => :add_tag

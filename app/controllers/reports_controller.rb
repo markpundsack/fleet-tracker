@@ -1,7 +1,9 @@
 class ReportsController < ApplicationController
-  before_filter :update_current_user
+  before_filter :get_current_user
   before_filter :require_igb, :only => [:create]  
-  before_filter :admin_user, :except => [:create]
+  before_filter :require_global_admin, :except => [:create]
+  
+  # TODO Remove extraneous actions
 
   # GET /fleet/:fleet_id/reports
   # GET /fleet/:fleet_id/reports.xml

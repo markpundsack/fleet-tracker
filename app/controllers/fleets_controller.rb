@@ -1,8 +1,8 @@
 class FleetsController < ApplicationController
-  before_filter :update_current_user
+  before_filter :get_current_user#, :except => [:index, :show]
+  # before_filter :get_current_user_and_force_update, :only => [:index, :show]
   before_filter :require_igb, :only => [:index, :join, :leave, :new, :create]
   before_filter :check_fleet_id, :only => [:show, :join, :purge, :edit, :update, :destroy]
-  # TODO Consider only purging fleets in index to save database hits, especially since show is called from javascript
   # TODO Find a way to do this as a background task instead
   before_filter :purge_fleets, :only => [:index]
   
@@ -17,10 +17,10 @@ class FleetsController < ApplicationController
     end
   end
 
-  def purge
-    @fleet = Fleet.find(params[:id])
-    @users = @fleet.purge_users
-  end
+  # def purge
+  #   @fleet = Fleet.find(params[:id])
+  #   @users = @fleet.purge_users
+  # end
   
   # GET /fleets/1
   # GET /fleets/1.xml
@@ -79,8 +79,7 @@ class FleetsController < ApplicationController
 
     respond_to do |format|
       if @fleet.save
-        @current_user.fleet = @fleet # auto join after creation
-        @current_user.save
+        @current_user.join_fleet(@fleet) # auto join after creation
         format.html { redirect_to(@fleet, :notice => 'Fleet was successfully created.') }
         format.xml  { render :xml => @fleet, :status => :created, :location => @fleet }
       else
