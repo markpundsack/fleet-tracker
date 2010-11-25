@@ -19,7 +19,7 @@
 #
 
 class User < ActiveRecord::Base
-  STALE = 1
+  STALE = 2
   ABANDONED = 10
   PURGE = 20
   

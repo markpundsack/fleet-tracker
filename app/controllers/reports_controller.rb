@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  # before_filter :get_current_user_and_force_update
+  before_filter :get_current_user
   before_filter :require_igb, :only => [:create]  
   before_filter :require_global_admin, :except => [:create]
   
