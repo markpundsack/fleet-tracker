@@ -35,7 +35,7 @@ group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 group :development do
-  gem 'ruby-debug19'
+  #gem 'ruby-debug19'
   gem 'annotate'
   gem 'haml-rails'
 end
