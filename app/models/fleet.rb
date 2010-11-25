@@ -35,7 +35,7 @@ class Fleet < ActiveRecord::Base
     fleet = new(:display_pilot_count => true, 
                 :display_fc_info => true,
                 :scope => ALLIANCE,
-                :direct_access => true) #alliance
+                :direct_access => true)
     if user
       fleet.title = "#{user.char_name}'s Fleet"
       fleet.fc = user.char_name

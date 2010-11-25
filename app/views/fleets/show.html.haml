@@ -1,4 +1,4 @@
-%div[@fleet]{:data => {:id => "#{@fleet.id}", :time => "#{Time.now.to_i}"}}
+%div[@fleet]{:data => {:id => @fleet.id, :time => Time.now.to_i, :refresh => 2*1000, :base_url => root_url}}
   .float
     = link_to "Fleet #{@fleet.id}", @fleet, :title => "Copy this URL to invite others to join or to view in your out-of-game browser"
     /= button_to "Copy URL", "#"

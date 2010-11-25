@@ -1,8 +1,8 @@
 require 'new_relic/agent/method_tracer.rb'
 ApplicationController.class_eval do
     include NewRelic::Agent::MethodTracer
-    add_method_tracer :update_current_user
-    add_method_tracer :admin_user
+    add_method_tracer :get_current_user_and_force_update
+    add_method_tracer :require_global_admin
 end
 FleetsController.class_eval do
     include NewRelic::Agent::MethodTracer

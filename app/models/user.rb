@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
       user.set_from_env(env)
       user.updated_at = Time.now # To force an update
       user.save
-      Logger.new(STDOUT).info('updated user')
+      #Logger.new(STDOUT).info('updated user')
     end
     return user
   end

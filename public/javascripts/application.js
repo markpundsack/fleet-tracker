@@ -16,44 +16,34 @@ $(function() {
 });
 
 $(function() {
-  if ($("#details").length > 0) {
-    setTimeout(updateFleet, 20*1000);
-    
-    $(".toggle").click(function() {
-      $(this).next(".section").slideToggle("fast");
-      return false;
-    });
-  } else if ($("#ping").length > 0) {
-    setTimeout(ping, 20*1000);
+	if ($("#ping").length > 0) {
+		var ping_refresh = $('#ping').attr('data-refresh');
+		var ping_base_url = $('#ping').attr('data-base-url');
+    setTimeout(ping, ping_refresh);
   }
+
+  if ($("#details").length > 0) {
+	  var fleet_refresh = $('.fleet').attr('data-refresh');
+		var fleet_base_url = $('.fleet').attr('data-base_url');
+    var fleet_id = $(".fleet").attr("data-id");
+    var fleet_after = $(".fleet").attr("data-time");
+    setTimeout(updateFleet, fleet_refresh);
+    
+  }
+
+  $(".toggle").click(function() {
+    $(this).next(".section").slideToggle("fast");
+    return false;
+  });
   
   function updateFleet () {
-    var fleet_id = $(".fleet").attr("data-id");
-    if ($(".fleet").length > 0) {
-      var after = $(".fleet").attr("data-time");
-    } else {
-      var after = "0";
-    }
-		
-    $.getScript(base_url + "fleets/" + fleet_id + ".js?after=" + after);
-    setTimeout(updateFleet, 20000);
-  }
-
-  function updateReports () {
-    var fleet_id = $(".fleet").attr("data-id");
-    if ($(".report").length > 0) {
-      var after = $(".report:first-child").attr("data-time");
-    } else {
-      var after = "0";
-    }
-
-    $.getScript(base_url + "fleets/" + fleet_id + "/reports.js?after=" + after);
-    setTimeout(updateReports, 20000);
+    $.getScript(fleet_base_url + "fleets/" + fleet_id + ".js?after=" + fleet_after);
+    setTimeout(updateFleet, fleet_refresh);
   }
 
   function ping () {
-    $.getScript(base_url + "ping.js");
-    setTimeout(ping, 10000);
+    $.getScript(ping_base_url + "ping.js");
+    setTimeout(ping, ping_refresh);
   }
 
 });
