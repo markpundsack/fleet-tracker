@@ -96,8 +96,8 @@ class Fleet < ActiveRecord::Base
   end
   
   def access_by?(user)
-    return false if user.nil?
     return true if self.direct_access
+    return false if user.nil?
     return true if user.fleet == self
     return true if self.admin?(user)
     case self.scope
