@@ -40,5 +40,7 @@ group :development do
   gem 'haml-rails'
 end
 group :production do
-  gem 'ruby-mysql'
+  #gem 'ruby-mysql'
+  gem 'pg'
+  gem 'thin'
 end
