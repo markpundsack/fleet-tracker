@@ -124,7 +124,7 @@ class Fleet < ActiveRecord::Base
   }
   
   def self.purge
-    Fleet.empty.map(&:delete)
+    #Fleet.empty.map(&:delete)
   end
   
 end
