@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   
   before_save :check_for_changes
   
-  belongs_to :fleet
+  belongs_to :fleet, :counter_cache => true
   belongs_to :tag
 
   default_scope :order => 'char_name'

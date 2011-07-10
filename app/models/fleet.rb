@@ -117,14 +117,17 @@ class Fleet < ActiveRecord::Base
   end
   
   scope :empty, lambda {
-    select("fleets.*,count(users.id) as users_count").
-    joins("LEFT JOIN users ON fleets.id = users.fleet_id").
-    group("fleets.id").
-    having("users_count=0")
+    #select("fleets.*,count(users.id)").
+    #joins("LEFT JOIN users ON fleets.id = users.fleet_id").
+    #group("fleets.id,fleet.title, fleet.created_at, fleet.updated_at, fleet.scope, fleet.display_pilot_count, fleet.display_fc_info, fleet.fc, fleet.xo, fleet.created_by, fleet.corp_name, fleet.alliance_name, fleet.direct_access").
+    #having("count(users.id)=0")
+    #select("fleets.*, (select count(users.id) from users where fleets.id = users.fleet_id) as user_count").
+    #having("user_count=0")
+    where("users_count=0")
   }
   
   def self.purge
-    #Fleet.empty.map(&:delete)
+    Fleet.empty.map(&:delete)
   end
   
 end
