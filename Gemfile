@@ -25,7 +25,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'hashtrain-acts_as_random_id', :require => 'acts_as_random_id'
 gem 'rails3-jquery-autocomplete'
-gem "compass", ">= 0.10.6"
+# gem "compass", ">= 0.10.6"
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
