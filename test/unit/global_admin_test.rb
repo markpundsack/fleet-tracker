@@ -1,12 +1,3 @@
-require 'test_helper'
-
-class GlobalAdminTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-end
-
 # == Schema Information
 #
 # Table name: global_admins
@@ -16,4 +7,13 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #
+
+require 'test_helper'
+
+class GlobalAdminTest < ActiveSupport::TestCase
+  # Replace this with your real tests.
+  test "the truth" do
+    assert true
+  end
+end
 

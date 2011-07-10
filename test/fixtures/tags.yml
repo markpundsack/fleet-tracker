@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id          :integer         not null, primary key
+#  text        :string(255)     not null
+#  usage_count :integer         not null
+#  favorite    :boolean
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
@@ -10,15 +22,4 @@ two:
   usage_count: 1
   favorite: false
 
-# == Schema Information
-#
-# Table name: tags
-#
-#  id          :integer         not null, primary key
-#  text        :string(255)     not null
-#  usage_count :integer         default(0), not null
-#  favorite    :boolean
-#  created_at  :datetime
-#  updated_at  :datetime
-#
 

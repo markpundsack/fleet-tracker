@@ -1,14 +1,3 @@
-require 'test_helper'
-
-class UserTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-end
-
-
-
 # == Schema Information
 #
 # Table name: users
@@ -27,4 +16,15 @@ end
 #  changed_at         :datetime
 #  tag_id             :integer
 #
+
+require 'test_helper'
+
+class UserTest < ActiveSupport::TestCase
+  # Replace this with your real tests.
+  test "the truth" do
+    assert true
+  end
+end
+
+
 

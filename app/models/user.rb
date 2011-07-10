@@ -1,4 +1,3 @@
-
 # == Schema Information
 #
 # Table name: users
@@ -17,6 +16,7 @@
 #  changed_at         :datetime
 #  tag_id             :integer
 #
+
 
 class User < ActiveRecord::Base
   STALE = 2

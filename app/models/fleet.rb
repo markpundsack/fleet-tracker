@@ -15,10 +15,13 @@
 #  corp_name           :string(255)
 #  alliance_name       :string(255)
 #  direct_access       :boolean
+#  users_count         :integer
+#  deleted_at          :time
 #
 
 class Fleet < ActiveRecord::Base
   acts_as_random_id
+  acts_as_paranoid
   validates_presence_of :title, :scope
   
   has_many :users
@@ -51,7 +54,7 @@ class Fleet < ActiveRecord::Base
   end
   
   def self.visible(user)
-    where("scope = #{OPEN} or (scope = #{ALLIANCE} and alliance_name = ?) or (scope = #{CORP} and corp_name = ?) or created_by = ? or fc = ? or xo = ? or id = ?", 
+    where("scope = #{OPEN} or (scope = #{ALLIANCE} and alliance_name = ?) or (scope = #{CORP} and corp_name = ?) or created_by = ? or fc = ? or xo = ? or id = ? and deleted = false", 
           user.alliance_name, user.corp_name, user.char_name, user.char_name, user.char_name, user.fleet_id)
   end  
 
@@ -131,3 +134,4 @@ class Fleet < ActiveRecord::Base
   end
   
 end
+

@@ -9,7 +9,7 @@ class FleetsController < ApplicationController
   # GET /fleets
   # GET /fleets.xml
   def index
-    @fleets = ((@current_user && @current_user.global_admin?) ? Fleet.all : Fleet.visible(@current_user))
+    @fleets = ((@current_user && @current_user.global_admin?) ? Fleet.with_deleted : Fleet.visible(@current_user))
 
     respond_to do |format|
       format.html # index.html.erb

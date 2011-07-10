@@ -1,17 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  char_name: MyString
-  solar_system_name: MyString
-  reds: 1
-  neutrals: 1
-
-two:
-  char_name: MyString
-  solar_system_name: MyString
-  reds: 1
-  neutrals: 1
-
 # == Schema Information
 #
 # Table name: reports
@@ -25,4 +11,18 @@ two:
 #  updated_at        :datetime
 #  fleet_id          :integer
 #
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  char_name: MyString
+  solar_system_name: MyString
+  reds: 1
+  neutrals: 1
+
+two:
+  char_name: MyString
+  solar_system_name: MyString
+  reds: 1
+  neutrals: 1
 

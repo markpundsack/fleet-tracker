@@ -1,12 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  title: MyString
-
-two:
-  title: MyString
-
-
 # == Schema Information
 #
 # Table name: fleets
@@ -24,5 +15,17 @@ two:
 #  corp_name           :string(255)
 #  alliance_name       :string(255)
 #  direct_access       :boolean
+#  users_count         :integer
+#  deleted_at          :time
 #
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+
+two:
+  title: MyString
+
+
 

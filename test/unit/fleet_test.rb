@@ -1,13 +1,3 @@
-require 'test_helper'
-
-class FleetTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-end
-
-
 # == Schema Information
 #
 # Table name: fleets
@@ -25,5 +15,18 @@ end
 #  corp_name           :string(255)
 #  alliance_name       :string(255)
 #  direct_access       :boolean
+#  users_count         :integer
+#  deleted_at          :time
 #
+
+require 'test_helper'
+
+class FleetTest < ActiveSupport::TestCase
+  # Replace this with your real tests.
+  test "the truth" do
+    assert true
+  end
+end
+
+
 

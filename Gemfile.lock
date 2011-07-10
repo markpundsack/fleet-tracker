@@ -76,6 +76,8 @@ GEM
       railties (= 3.0.9)
     rails3-jquery-autocomplete (0.9.0)
       rails (~> 3.0)
+    rails3_acts_as_paranoid (0.0.8)
+      activerecord (>= 3.0)
     railties (3.0.9)
       actionpack (= 3.0.9)
       activesupport (= 3.0.9)
@@ -110,5 +112,6 @@ DEPENDENCIES
   pg
   rails (>= 3.0.3)
   rails3-jquery-autocomplete
+  rails3_acts_as_paranoid
   sqlite3-ruby
   thin
