@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20110710072734) do
   add_index "reports", ["solar_system_name"], :name => "index_reports_on_solar_system_name"
 
   create_table "tags", :force => true do |t|
-    t.string   "text",        :null => false
-    t.integer  "usage_count", :null => false
+    t.string   "text",                       :null => false
+    t.integer  "usage_count", :default => 0, :null => false
     t.boolean  "favorite"
     t.datetime "created_at"
     t.datetime "updated_at"

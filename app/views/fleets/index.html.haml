@@ -5,9 +5,9 @@
     - @fleets.each do |fleet|
       %tr[fleet]
         - pilot_count = fleet.users.count
-        %td= link_to fleet.title, fleet
+        %td= link_to fleet.title, fleet_path(fleet)
         %td
-          = link_to 'View', fleet
+          = link_to 'View', fleet_path(fleet)
           %br/
           = link_to 'Edit', edit_fleet_path(fleet) if fleet.admin?(@current_user)
         %td  

@@ -22,12 +22,21 @@ test:
   pool: 5
   timeout: 5000
 
+#production-mysql:
+#  adapter: mysql
+#  encoding: utf8
+#  reconnect: false
+#  database: everanch_tracker
+#  pool: 5
+#  username: everanch_tracker
+#  password: VgCW(PT4Um~B
+#  socket: 
+    
 production:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: everanch_tracker
-  pool: 5
-  username: everanch_tracker
-  password: VgCW(PT4Um~B
-  socket: 
+    encoding: unicode
+    adapter: postgresql
+    port: 5432
+    host: localhost
+    database: fleet-tracker-production
+    username: markpundsack
+    password: 

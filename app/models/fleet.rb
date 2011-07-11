@@ -99,6 +99,8 @@ class Fleet < ActiveRecord::Base
   end
   
   def access_by?(user)
+    return true if user.global_admin?
+    return false if self.deleted?
     return true if self.direct_access
     return false if user.nil?
     return true if user.fleet == self

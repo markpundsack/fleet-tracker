@@ -1,6 +1,5 @@
 class FleetsController < ApplicationController
   before_filter :get_current_user#, :except => [:index, :show]
-  # before_filter :get_current_user_and_force_update, :only => [:index, :show]
   before_filter :require_igb, :only => [:index, :join, :leave, :new, :create]
   before_filter :check_fleet_id, :only => [:show, :join, :purge, :edit, :update, :destroy]
   # TODO Find a way to do this as a background task instead
@@ -120,7 +119,11 @@ class FleetsController < ApplicationController
   protected
   
   def check_fleet_id
-    you_hacker unless Fleet.exists?(params[:id])
+    if(@current_user.global_admin?)
+      you_hacker unless Fleet.with_deleted.exists?(params[:id])
+    else
+      you_hacker unless Fleet.exists?(params[:id])
+    end
   end
   
   def you_hacker    

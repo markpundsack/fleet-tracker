@@ -3,7 +3,7 @@ class ChangeFieldsToFleets < ActiveRecord::Migration
     add_column :fleets, :created_by, :string
     add_column :fleets, :corp_name, :string
     add_column :fleets, :alliance_name, :string
-    remove_column :fleets, :user_id
+    #remove_column :fleets, :user_id
   end
 
   def self.down
