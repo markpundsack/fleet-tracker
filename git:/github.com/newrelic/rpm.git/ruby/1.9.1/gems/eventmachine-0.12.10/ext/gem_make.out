@@ -1,0 +1,19 @@
+/Users/markpundsack/.rbenv/versions/1.9.2-p290/bin/ruby extconf.rb 
+checking for rb_trap_immediate in ruby.h,rubysig.h... no
+checking for rb_thread_blocking_region()... yes
+checking for inotify_init() in sys/inotify.h... no
+checking for __NR_inotify_init in sys/syscall.h... no
+checking for writev() in sys/uio.h... yes
+checking for rb_thread_check_ints()... yes
+checking for rb_time_new()... yes
+checking for sys/event.h... yes
+checking for sys/queue.h... yes
+checking for main() in -lssl... yes
+checking for main() in -lcrypto... yes
+checking for main() in -lC... yes
+checking for openssl/ssl.h... yes
+checking for openssl/err.h... yes
+creating Makefile
+
+make
+Makefile:148: *** target pattern contains no `%'.  Stop.
