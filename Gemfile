@@ -34,7 +34,7 @@ gem 'newrelic_rpm'
 # and rake tasks are available in development mode:
 group :development, :test do
   # gem 'webrat'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'sqlite3'
 end
 group :development do
   #gem 'ruby-debug19'
